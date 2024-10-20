@@ -11,32 +11,44 @@
     <script src="libraries/p5.min.js"></script>
     <script src="libraries/p5.sound.min.js"></script>
   </head>
-
   <body>
+    <div id="question">
+      <div class="function">
+        <img src="/src/question.png">
+      </div>
+    </div>
     <h1>Game Title</h1>
-    <button id="question">Question</button>
     <div id="games">
-      <div id="drawLine">
+      <div id="drawLine" class="game">
         <figure>
-          <figcaption>Drawling line</figcaption>
+          <img src="./src/cat.jpg" alt="cat"/>
+          <figcaption><h2>Drawling line</h2></figcaption>
         </figure>
       </div>
-      <div id="dragObject">
+      <div id="dragObject" class="game">
         <figure>
-          <figcaption>Draging object</figcaption>
+          <img src="./src/cat.jpg" alt="cat"/>
+          <figcaption><h2>Draging object</h2></figcaption>
         </figure>
       </div>
-      <div id="clickObject">
+      <div id="clickObject" class="game">
         <figure>
-          <figcaption>Clicking object</figcaption>
+          <img src="./src/cat.jpg" alt="cat"/>
+          <figcaption><h2>Clicking object</h2></figcaption>
         </figure>
       </div>
     </div>
-    <div id="volumn">
-      <button>Volumn</button>
-      <input type="range" min="0" max="100"/>
+    <div id="footer">
+      <div id="volume">
+        <div class="function">
+          <img src="src/volume.png"/>
+        </div>
+        <input type="range" min="0" max="100"/>
+      </div>
+      <div id="quit" class="function">
+        <img src="src/door.png"/>
+      </div>
     </div>
-    <button>Quit</button>
     <script src="sketch.js"></script>
   </body>
 </html>
