@@ -1,0 +1,34 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  cursor: default;
+}
+canvas {
+  display: block;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.error {
+  visibility: hidden;
+}
+
+.textDiv {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+}
+
+#startDiv {
+  display: flex;
+  justify-content: center;
+}
+
+#button {
+  display: flex;
+  justify-content: space-between;
+}

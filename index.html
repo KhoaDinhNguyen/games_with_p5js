@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Homepage</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="libraries/p5.min.js"></script>
+    <script src="libraries/p5.sound.min.js"></script>
+  </head>
+
+  <body>
+    <h1>Game Title</h1>
+    <button id="question">Question</button>
+    <div id="games">
+      <div id="drawLine">
+        <figure>
+          <figcaption>Drawling line</figcaption>
+        </figure>
+      </div>
+      <div id="dragObject">
+        <figure>
+          <figcaption>Draging object</figcaption>
+        </figure>
+      </div>
+      <div id="clickObject">
+        <figure>
+          <figcaption>Clicking object</figcaption>
+        </figure>
+      </div>
+    </div>
+    <div id="volumn">
+      <button>Volumn</button>
+      <input type="range" min="0" max="100"/>
+    </div>
+    <button>Quit</button>
+    <script src="sketch.js"></script>
+  </body>
+</html>
