@@ -25,6 +25,7 @@ class Line {
     this.points = [];
     this.checkPoints = [];
     this.finish = false;
+    this.follow = true;
     const gap_x = Math.abs((this.x1 - this.x2) / 100);
     const gap_y = Math.abs((this.y1 - this.y2) / 100);
     
@@ -67,8 +68,14 @@ class Line {
     stroke('red');
     fill('red');
     circle(this.x2, this.y2, 20);
+
+    this.follow = true;
   }
   isFollowed([x ,y]) {
+    if (this.follow === false) {
+      return false;
+    }
+
     const distanceBetweenCheckPoint = distanceBetweenTwoPoints([this.x1, this.y1], [x, y]);
     if (distanceBetweenCheckPoint <= 20) {
       return true;
@@ -86,9 +93,11 @@ class Line {
     const distance = Math.abs(this.a * x + this.b * y + this.c) / Math.sqrt(this.a * this.a + this.b * this.b);
     // If the distance is greater than 5, then the user strays the line
     if (distance > 5) {
+      this.follow = false;
       return false;
     }
     else {
+      // check the check point
       for(let i = 0; i < 100; ++i) {
         if (Math.sqrt(Math.pow(x - this.points[i][0], 2) + Math.pow(y - this.points[i][1], 2) <= 5)) {
               this.checkPoints[i] = true;
@@ -112,7 +121,7 @@ class Line {
       }
     }
     const distance = distanceBetweenTwoPoints([this.x2, this.y2], [x, y]);
-    if (distance <= 20 && count >= 75) {
+    if (distance <= 20 && count >= 75 && this.follow) {
       /*
       if the mouse is in the circle and their points are still in line
       -> then user suceed
@@ -130,10 +139,8 @@ class Model {
     this.currentLineIndex = 0;
     this.correctPoints = [];
     this.falsePoints = [];
-    this.finish = false;
     this.length = arrayOfLine.length;
-    this.correctPoints = [];
-    this.falsePoints = [];
+    this.finish = false;
   }
   drawModel() {
     for (const line of this.arrayOfLine) {
@@ -141,26 +148,31 @@ class Model {
     }
   }
   isFollowed([x, y]) {
-    const currentLine = this.arrayOfLine[this.currentLineIndex];
-    const finish = currentLine.isFinish([x ,y]);
-    if (finish == true && this.currentLineIndex < this.length - 1) {
-      this.currentLineIndex++;
+    const finish = this.arrayOfLine[this.currentLineIndex].isFinish([x ,y]);
+
+    if (finish == true) {
       this.correctPoints.length = 0;
       this.falsePoints.length = 0;
+
+      if (this.currentLineIndex < this.length - 1) {
+        this.currentLineIndex++;
+      }
+      else {
+        return true;
+      }
     }
-    
-    else if(finish == true && this.currentLineIndex == this.length - 1) {
-      console.log("Finish");
-    }
-    
-    return currentLine.isFollowed([x, y]);
+
+    return this.arrayOfLine[this.currentLineIndex].isFollowed([x, y]);
 
   }
   isFinish([x ,y]) {
-    if (this.currentLineIndex < this.length) {
+    if (this.currentLineIndex < this.length - 1) {
+      this.finish = false;
       return false;
     }
-    return this.arrayOfLine[this.length - 1].isFinish([x, y]);
+    
+    this.finish = this.arrayOfLine[this.length - 1].isFinish([x, y]);
+    return this.finish;
   }
   run() {
     if(this.isFinish([mouseX, mouseY]) !== true) {
@@ -176,12 +188,11 @@ class Model {
 }
 
 // ================================= DATABASE
-//const line1 = new Line([[200, 200], [400, 400]]);
 class GameStart {
   constructor() {
     this.start = false;
     this.currentModelIndex = 0;
-    const arrayOfModel = [
+    this.arrayOfModel = [
       new Model([
         new Line([[200, 200], [400, 200]])
       ]),
@@ -197,76 +208,88 @@ class GameStart {
         new Line([[700, 300], [800, 200]]),
       ]),
       new Model([
-
-      ]),
-      new Model([
-
+        new Line([[200, 200], [200, 400]]),
+        new Line([[200, 400], [400, 400]]),
+        new Line([[400, 400], [400, 200]]),
+        new Line([[400, 200], [600, 200]]),
+        new Line([[600, 200], [600, 400]]),
+        new Line([[600, 400], [800, 400]]),
+        new Line([[800, 400], [800, 200]]),
       ]),
     ]
   }
+  draw() {
+    this.arrayOfModel[this.currentModelIndex].drawModel();
+  }
+  run() {
+    const currentModel = this.arrayOfModel[this.currentModelIndex];
+    this.start = !currentModel.finish;
+    currentModel.run();
+    if (this.start == false && this.currentModelIndex < this.arrayOfModel.length - 1) {
+      nextButton.style.visibility = "visible";
+    }
+    else {
+      // run finish
+    }
+  }
+  correctPoints() {
+    return this.arrayOfModel[this.currentModelIndex].correctPoints;
+  }
+  falsePoints() {
+    return this.arrayOfModel[this.currentModelIndex].falsePoints;
+  }
 }
-const model1 = new Model([
-  new Line([[200, 200], [200, 400]]),
-  new Line([[200, 400], [400, 400]]),
-  new Line([[400, 400], [400, 200]]),
-  new Line([[400, 200], [600, 200]]),
-  new Line([[600, 200], [600, 400]]),
-  new Line([[600, 400], [800, 400]]),
-  new Line([[800, 400], [800, 200]]),
-
-
-]);
-
-const game = new GameStart();
 
 // ================================= SETUP
+const game = new GameStart();
+
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, 600);
 }
 
 function draw() {
-  background(220);
-  model1.drawModel();
+  background('white');
+  game.draw();
   
   stroke('black');
-  for (const item of model1.correctPoints) {
+  for (const item of game.correctPoints()) {
     point(item[0], item[1]);
   }
   stroke('red');
-  for (const item of model1.falsePoints) {
+  for (const item of game.falsePoints()) {
     point(item[0], item[1]);
   }
 }
 
 function mouseDragged() {
   if (game.start === true) {
-    model1.run();
+    game.run();
   }
 }
 
 const startButton = document.getElementById("startButton");
 const text = document.getElementById("text");
-
 const tryAgainButton = document.getElementById("tryAgainButton");
+const nextButton = document.getElementById("next");
+
+nextButton.addEventListener("click", () => {
+  game.currentModelIndex++;
+  nextButton.style.visibility = "hidden";
+  startButton.style.visibility = "visible";
+  draw();
+})
 
 tryAgainButton.addEventListener("click", () => {  
-  model1.correctPoints.length = 0;
-  model1.falsePoints.length = 0;
+  game.correctPoints().length = 0;
+  game.falsePoints().length = 0;
   draw();
-  const errorText = document.getElementsByClassName("error");
-  for (const item of errorText) {
-    item.style.visibility = "hidden";
-  }
+  tryAgainButton.style.visibility = "hidden";
   text.textContent = "Game on";
-  
 })
 
 function insertError() {
-  const errorText = document.getElementsByClassName("error");
+  tryAgainButton.style.visibility = "visible";
   text.textContent = "Oh no, the line is out";
-  for (const item of errorText) {
-    item.style.visibility = "visible";
-  }
 }
 
 
@@ -274,4 +297,5 @@ startButton.addEventListener("click", () => {
   game.start = true;
   startButton.style.visibility = "hidden";
   text.style.visibility = "visible";
+  text.textContent = "Game on";
 })

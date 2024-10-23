@@ -12,10 +12,15 @@ body {
 }
 
 h1 {
-  color: #3f71f1;
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  color: yellow;
+  text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
   font-weight: bold;
   text-align: center;
-  font-size: 3em;
+  font-size: 5em;
 }
 
 #games img {
@@ -49,16 +54,28 @@ figcaption {
 
 h2 {
   margin: 20px;
+  font-family: "Bubblegum Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
-#games div figure {
+
+#games a figure {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
   height: 300px;
 }
 
-#games div figure img {
+#games a figure img {
   margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+}
+a:visited {
+  color: black;
+  text-decoration: none;
 }
 
 #drawLine {

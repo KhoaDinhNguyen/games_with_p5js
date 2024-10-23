@@ -2,6 +2,7 @@ html, body {
   margin: 0;
   padding: 0;
   cursor: default;
+  background-color: #0496c7;
 }
 canvas {
   display: block;
@@ -12,15 +13,19 @@ canvas {
   justify-content: space-between;
 }
 
-.error {
-  visibility: hidden;
-}
+h1 {
+  color: yellow;
+  margin: 0;
+  text-align: center;
+  padding: 10px 0;
 
-.textDiv {
-  position: absolute;
+}
+.nofication {
+  position: relative;
   display: flex;
   justify-content: center;
   width: 100vw;
+  visibility: hidden;
 }
 
 #startDiv {
@@ -28,7 +33,97 @@ canvas {
   justify-content: center;
 }
 
-#button {
+.button {
   display: flex;
   justify-content: space-between;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 6em;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#startButton {
+  height: 2.5em;
+  padding: 20px 40px;
+  background-color: yellowgreen;
+  border: 1px solid yellowgreen;
+  border-radius: 10px;
+  color: black;
+  font-size: 30px;
+  font-weight: 700;
+  transition: all 0.25s;
+  width: max-content;
+}
+
+#startButton:hover {
+  border: 1px solid azure;
+  background-color: azure;
+}
+
+#startButton:active {
+  background-color: azure;
+  border: 1px solid yellowgreen;
+  color: yellowgreen;
+}
+
+#next {
+  height: 2.5em;
+  padding: 20px 40px;
+  background-color: orange;
+  border: 1px solid orange;
+  border-radius: 10px;
+  color: black;
+  font-size: 30px;
+  font-weight: 700;
+  transition: all 0.25s;
+  width: max-content;
+  margin-right: 20px;
+  visibility: hidden; 
+}
+
+#next:hover {
+  border: 1px solid azure;
+  background-color: azure;
+}
+
+#next:active {
+  background-color: azure;
+  border: 1px solid orange;
+  color: orange;
+}
+
+#tryAgainButton{
+  visibility: hidden;
+}
+
+#tryAgainButton {
+  height: 2.5em;
+  padding: 20px 20px;
+  background-color: #e93b3b;
+  border: 1px solid #e93b3b;
+  border-radius: 10px;
+  color: black;
+  font-size: 30px;
+  font-weight: 700;
+  transition: all 0.25s;
+  width: max-content;
+  margin-left: 20px;
+  visibility: hidden; 
+}
+
+#tryAgainButton:hover {
+  border: 1px solid azure;
+  background-color: azure;
+}
+
+#tryAgainButton:active {
+  background-color: azure;
+  border: 1px solid #e93b3b;
+  color: #e93b3b;
+}
+
+footer {
+  background-color: #0496c7;
 }
