@@ -92,14 +92,14 @@ class Line {
     */
     const distance = Math.abs(this.a * x + this.b * y + this.c) / Math.sqrt(this.a * this.a + this.b * this.b);
     // If the distance is greater than 5, then the user strays the line
-    if (distance > 5) {
+    if (distance > 10) {
       this.follow = false;
       return false;
     }
     else {
       // check the check point
       for(let i = 0; i < 100; ++i) {
-        if (Math.sqrt(Math.pow(x - this.points[i][0], 2) + Math.pow(y - this.points[i][1], 2) <= 5)) {
+        if (Math.sqrt(Math.pow(x - this.points[i][0], 2) + Math.pow(y - this.points[i][1], 2) <= 10)) {
               this.checkPoints[i] = true;
             }
       }
@@ -172,6 +172,11 @@ class Model {
     }
     
     this.finish = this.arrayOfLine[this.length - 1].isFinish([x, y]);
+
+    if (this.finish) {
+      this.correctPoints = [];
+      this.falsePoints = [];
+    }
     return this.finish;
   }
   run() {
@@ -227,6 +232,7 @@ class GameStart {
     currentModel.run();
     if (this.start == false && this.currentModelIndex < this.arrayOfModel.length - 1) {
       nextButton.style.visibility = "visible";
+      text.textContent = "Good job!!!";
     }
     else {
       // run finish
