@@ -6,6 +6,7 @@ let circleX = 350;
 let circleY = 220;
 let radius = 100 / 2;
   var timer = 20;
+  let gameStart = true;
 
 function distanceTwoPoints([x1, y1], [x2, y2]) {
   return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
@@ -26,6 +27,7 @@ function draw() {
   }
   if (timer == 0) {
     textStyle(BOLD);
+    gameStart = false;
     text("GAME OVER", 250, 275);
     text("SCORE: " + gameScore, 250, 310);
   }
@@ -35,7 +37,7 @@ function draw() {
 var gameScore = 0;
 
 function mouseClicked(){
-  if(distanceTwoPoints([circleX, circleY], [mouseX, mouseY]) < radius) {
+  if(distanceTwoPoints([circleX, circleY], [mouseX, mouseY]) < radius && gameStart === true) {
    circleX = random(0, 500);
    circleY = random(0, 500); 
    gameScore ++;
