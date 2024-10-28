@@ -305,3 +305,6 @@ startButton.addEventListener("click", () => {
   text.style.visibility = "visible";
   text.textContent = "Game on";
 })
+
+
+

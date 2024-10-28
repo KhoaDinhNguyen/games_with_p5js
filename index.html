@@ -21,23 +21,45 @@
         <img src="/src/question.png">
       </div>
     </div>
+    <div id="help">
+      <div>
+        <img src="./src/close.png" id="helpClose" alt="close">
+      </div>
+      <div>
+        <h2>Help</h2>
+      </div>
+      <h3>Company</h3>
+      <p>Group 10 - Fine motor skills</p>
+      <h3>Application</h3>
+      <p>This web application is built for toddlers to pratice exercises and develop their motor skills</p>
+      <p>The web contains three exercises: </p>
+      <ul>
+        <li>Drawing line</li>
+        <li>Draging object</li>
+        <li>Clicking object</li>
+      </ul>
+      <h3>Feedback</h3>
+      </div>
+    <div class="cloud1"></div>
+    <div class="cloud2"></div>
+    <div class="cloud3"></div>
     <h1>GAME START</h1>
     <div id="games">
-      <a href="./drawLine/index.html" id="drawLine" class="game">
+      <a href="javascript:setTimeout(()=>{window.location = './drawLine/index.html' }, 1000);" id="drawLine" class="game">
         <figure>
-          <img src="./src/cat.jpg" alt="cat"/>
+          <img src="./src/drawlingGame.png" alt="cat"/>
           <figcaption><h2>Drawling line</h2></figcaption>
         </figure>
       </a>
-      <a id="dragObject" class="game">
+      <a href="javascript:setTimeout(()=>{window.location = './drawLine/index.html' }, 1000);" id="dragObject" class="game">
         <figure>
           <img src="./src/cat.jpg" alt="cat"/>
           <figcaption><h2>Draging object</h2></figcaption>
         </figure>
       </a>
-      <a href="./clickObject/index.html" id="clickObject" class="game">
+      <a href="javascript:setTimeout(()=>{window.location = './clickObject/index.html' }, 1000);" id="clickObject" class="game">
         <figure>
-          <img src="./src/cat.jpg" alt="cat"/>
+          <img src="./src/clickingObject.png" alt="cat"/>
           <figcaption><h2>Clicking object</h2></figcaption>
         </figure>
       </a>
@@ -47,7 +69,7 @@
         <div class="function">
           <img src="src/volume.png"/>
         </div>
-        <input type="range" min="0" max="100"/>
+        <input name="volume" type="range" min="0" max="100" id="volume"/>
       </div>
       <div id="quit" class="function">
         <img src="src/door.png"/>
