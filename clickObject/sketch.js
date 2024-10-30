@@ -21,7 +21,7 @@ function distanceTwoPoints([x1, y1], [x2, y2]) {
 function draw() {
   background('white');
   
-  fill("red");
+  fill("#e74c3c");
   circle(circleX, circleY, RADIUS * 2);
   textStyle(BOLD);
   
@@ -75,7 +75,7 @@ const startButton = document.getElementById("start");
 startButton.addEventListener("click", () => {
   startButton.style.visibility = "hidden";
   gameStart = true;
-  startButton.innerHTML= "<p>Try Again</p>";
+  startButton.innerHTML= "<p>TRY AGAIN</p>";
   initialize();
 
   const finish = document.getElementById("finish");
@@ -86,3 +86,5 @@ function initialize() {
   timer = TIMER_EACH_GAME;
   gameScore = 0;
 }
+
+const quit = document.getElementById("quit");
