@@ -1,12 +1,12 @@
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(windowWidth, 600);
 }
 let randomNum = Math.random();
 let circleX = 350;
 let circleY = 220;
 let radius = 100 / 2;
-  var timer = 20;
-  let gameStart = true;
+let timer = 3;
+let gameStart = true;
 
 function distanceTwoPoints([x1, y1], [x2, y2]) {
   return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
@@ -21,17 +21,16 @@ function draw() {
   textSize(35);
   text("Timer: " + timer, 500, 35);
   
-  
-  if (frameCount % 60 == 0 && timer > 0) {
-    timer --;
+  if (gameStart) {
+    if (frameCount % 60 == 0 && timer > 0) {
+      timer--;
+    }
+    if (timer == 0) {
+      textStyle(BOLD);
+      gameStart = false;
+      finishGame();
+    }
   }
-  if (timer == 0) {
-    textStyle(BOLD);
-    gameStart = false;
-    text("GAME OVER", 250, 275);
-    text("SCORE: " + gameScore, 250, 310);
-  }
-
 }
 
 var gameScore = 0;
@@ -43,3 +42,11 @@ function mouseClicked(){
    gameScore ++;
   }
 }
+
+function finishGame() {
+  const finish = document.getElementById("finish");
+  finish.style.visibility = "visible";
+  const score = document.getElementById("score");
+  score.textContent = `Score: ${gameScore}`;
+}
+
