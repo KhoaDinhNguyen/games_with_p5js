@@ -3,6 +3,7 @@ html, body {
   padding: 0;
   background-color: #1abc9c;
   text-align: center;
+  user-select: none;
 }
 canvas {
   display: block;
@@ -18,18 +19,6 @@ h1 {
   font-style: normal;
   font-size: 3em;
   padding: 15px 0;
-}
-
-#finish {
-  position: absolute;
-  visibility: hidden;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  border: 2px solid green;
-  color: black;
-  z-index: 3;
-  background-color: azure;
 }
 
 #record {
@@ -52,4 +41,36 @@ h1 {
   background-color: orange;
   margin: 0;
   padding: 10px 20px;
+}
+
+#finish {
+  position: absolute;
+  visibility: hidden;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  border: 5px solid black;
+  border-radius: 20px;
+  color: black;
+  z-index: 3;
+  background-color: rgb(12, 9, 52);
+  padding: 5px;
+}
+
+#finish p:nth-child(1) {
+  padding: 0 30px;
+  font-size: 2rem;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: yellow;
+}
+
+#finish p:nth-child(2), #finish p:nth-child(3) {
+  padding: 0 30px;
+  font-size: 1.3rem;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+  margin-bottom: 10px;
 }

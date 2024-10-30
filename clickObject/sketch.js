@@ -9,8 +9,9 @@ const RADIUS = 100 / 2;
 let gameStart = false;
 
 let gameScore = 0;
+let bestScore = 0;
 
-const TIMER_EACH_GAME = 5;
+const TIMER_EACH_GAME = 3;
 let timer = TIMER_EACH_GAME;
 
 function distanceTwoPoints([x1, y1], [x2, y2]) {
@@ -56,8 +57,16 @@ function display() {
 function finishGame() {
   const finish = document.getElementById("finish");
   finish.style.visibility = "visible";
+
+  const currentScore = document.getElementById("currentscore");
+  currentScore.textContent = `Current score: ${gameScore}`;
+
   const bestscore = document.getElementById("bestscore");
-  bestscore.textContent = `Score: ${gameScore}`;
+  
+  if (bestScore < gameScore) {
+    bestScore = gameScore;
+  }
+  bestscore.textContent = `Best score: ${bestScore}`;
   startButton.style.visibility = "visible";
 }
 
@@ -68,6 +77,9 @@ startButton.addEventListener("click", () => {
   gameStart = true;
   startButton.innerHTML= "<p>Try Again</p>";
   initialize();
+
+  const finish = document.getElementById("finish");
+  finish.style.visibility = "hidden";
 })
 
 function initialize() {
