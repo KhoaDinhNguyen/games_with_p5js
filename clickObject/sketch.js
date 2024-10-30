@@ -11,7 +11,7 @@ let gameStart = false;
 let gameScore = 0;
 let bestScore = 0;
 
-const TIMER_EACH_GAME = 3;
+const TIMER_EACH_GAME = 20;
 let timer = TIMER_EACH_GAME;
 
 function distanceTwoPoints([x1, y1], [x2, y2]) {
