@@ -4,6 +4,10 @@ html, body {
   cursor: default;
   background-color: #0496c7;
 }
+
+* {
+  user-select: none;
+}
 canvas {
   display: block;
 }
@@ -18,18 +22,42 @@ h1 {
   margin: 0;
   text-align: center;
   padding: 10px 0;
-  user-select: none;
-
+  font-family: "Jersey 20", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3em;
 }
-.nofication {
+
+.notification {
   position: relative;
   display: flex;
   justify-content: center;
   width: 100vw;
   visibility: hidden;
-  user-select: none;
+  margin: 0;
 }
 
+
+#text {
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+  margin: 0;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 1.3rem;
+}
+
+#portion {
+  display: flex;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-top: 10px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-style: normal;
+}
 #startDiv {
   display: flex;
   justify-content: center;
@@ -96,10 +124,6 @@ h1 {
   color: orange;
 }
 
-#tryAgainButton{
-  visibility: hidden;
-}
-
 #tryAgainButton {
   height: 2.5em;
   padding: 20px 20px;
@@ -113,6 +137,7 @@ h1 {
   width: max-content;
   margin-left: 20px;
   visibility: hidden; 
+  user-select: none;
 }
 
 #tryAgainButton:hover {
@@ -131,13 +156,6 @@ h1 {
   background-color: #0496c7;
 }
 
-
-#text {
-  color:white;
-  font-weight: bold;
-  font-size: 30px;
-  margin-top: 10px;
-}
 
 #volume {
   display: flex;
@@ -163,3 +181,72 @@ h1 {
   border: 2px solid black;
   border-radius: 20px;
 }
+
+#quitPrompt {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  font-family: sans-serif;
+  font-weight: bold;
+  border: 2px solid blue;
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 1.3rem;
+}
+
+.quitPromptAnwser {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.quitPromptAnwser button:nth-child(1) {
+  background-color: green;
+  border: green 1px solid;
+  color: azure;
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+
+.quitPromptAnwser button:nth-child(2) {
+  background-color: #e93b3b;
+  border: #e93b3b 1px solid;
+  color: azure;
+  font-size: 1.5rem;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+#finish {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden;
+  text-align: center;
+  z-index: 3;
+  padding: 30px;
+  border: 5px solid green;
+  border-radius: 20px;
+  background-color: white;
+}
+
+#finish p {
+  color: black;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  margin: 0;
+}
+
+#finish p:nth-child(2) {
+  margin-top: 15px;
+}
+
+
+

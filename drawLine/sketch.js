@@ -26,6 +26,7 @@ class Line {
     this.checkPoints = [];
     this.finish = false;
     this.follow = true;
+    this.numPoints = 0;
     const gap_x = Math.abs((this.x1 - this.x2) / 100);
     const gap_y = Math.abs((this.y1 - this.y2) / 100);
     
@@ -68,10 +69,14 @@ class Line {
     stroke('red');
     fill('red');
     circle(this.x2, this.y2, 20);
-
-    this.follow = true;
+    
+    if (this.follow !== false) {
+      this.follow = true;
+    }
   }
   isFollowed([x ,y]) {
+    console.log(this.follow);
+
     if (this.follow === false) {
       return false;
     }
@@ -100,8 +105,8 @@ class Line {
       // check the check point
       for(let i = 0; i < 100; ++i) {
         if (Math.sqrt(Math.pow(x - this.points[i][0], 2) + Math.pow(y - this.points[i][1], 2) <= 10)) {
-              this.checkPoints[i] = true;
-            }
+          this.checkPoints[i] = true;
+        }
       }
       return true;
     }
@@ -131,6 +136,14 @@ class Line {
     }
     return false;
   }
+  numPointsFinish() {
+    this.numPoints = 0;
+    for (let i = 0; i < 100; ++i) {
+      if(this.checkPoints[i]) this.numPoints++;
+    }
+    console.log(this.numPoints);
+    return this.numPoints;
+  }
 }
 
 class Model {
@@ -141,8 +154,10 @@ class Model {
     this.falsePoints = [];
     this.length = arrayOfLine.length;
     this.finish = false;
+    this.numPoints = 0;
   }
   drawModel() {
+    updatePortion(this.numPoints);
     for (const line of this.arrayOfLine) {
       line.drawLine();
     }
@@ -153,7 +168,6 @@ class Model {
     if (finish == true) {
       this.correctPoints.length = 0;
       this.falsePoints.length = 0;
-
       if (this.currentLineIndex < this.length - 1) {
         this.currentLineIndex++;
       }
@@ -179,16 +193,25 @@ class Model {
     }
     return this.finish;
   }
+  portionLine() {
+    return this.arrayOfLine[this.currentLineIndex].numPointsFinish();
+  }
+  updateFollow() {
+    this.arrayOfLine[this.currentLineIndex].follow = true;
+  }
   run() {
     if(this.isFinish([mouseX, mouseY]) !== true) {
       if(this.isFollowed([mouseX, mouseY])) {
         this.correctPoints.push([mouseX, mouseY]);
+        this.numPoints = this.portionLine();
+        updatePortion(this.numPoints);
       }
       else {
         this.falsePoints.push([mouseX, mouseY]);
         insertError();
       }
     }
+
   }
 }
 
@@ -232,10 +255,11 @@ class GameStart {
     currentModel.run();
     if (this.start == false && this.currentModelIndex < this.arrayOfModel.length - 1) {
       nextButton.style.visibility = "visible";
-      text.textContent = "Good job!!!";
+      text.textContent = "Well done!!! Moving to the next level";
     }
-    else {
-      // run finish
+    else if (this.start === false && this.currentModelIndex === this.arrayOfModel.length - 1){
+      text.style.visibility = "hidden";
+      aceGame.style.visibility = "visible";
     }
   }
   correctPoints() {
@@ -243,6 +267,9 @@ class GameStart {
   }
   falsePoints() {
     return this.arrayOfModel[this.currentModelIndex].falsePoints;
+  }
+  updateFollow() {
+    this.arrayOfModel[this.currentModelIndex].updateFollow();
   }
 }
 
@@ -277,11 +304,15 @@ const startButton = document.getElementById("startButton");
 const text = document.getElementById("text");
 const tryAgainButton = document.getElementById("tryAgainButton");
 const nextButton = document.getElementById("next");
+const portion = document.getElementById("portion");
+const aceGame = document.getElementById("finish");
+const notification = document.getElementsByClassName("notification")[0];
 
 nextButton.addEventListener("click", () => {
   game.currentModelIndex++;
   nextButton.style.visibility = "hidden";
   startButton.style.visibility = "visible";
+  text.style.visibility = "hidden";
   draw();
 })
 
@@ -291,6 +322,7 @@ tryAgainButton.addEventListener("click", () => {
   draw();
   tryAgainButton.style.visibility = "hidden";
   text.textContent = "Game on";
+  game.updateFollow();
 })
 
 function insertError() {
@@ -307,4 +339,23 @@ startButton.addEventListener("click", () => {
 })
 
 
+const quit = document.getElementById("quit");
+const quitPrompt = document.getElementById("quitPrompt");
+const no = document.getElementById("no");
 
+quit.addEventListener("click", () => {
+  quitPrompt.style.visibility = "visible";
+});
+
+no.addEventListener("click", () => {
+  quitPrompt.style.visibility = "hidden";
+})
+
+function updatePortion(numPoints){
+  let portionPercentage = numPoints / 75 * 100;
+  if (portionPercentage >= 100) {
+    portionPercentage = 100;
+  }
+  const portion = document.getElementById("portion");
+  portion.textContent = `The percentage of current line: ${Math.round(portionPercentage)}%`;
+}

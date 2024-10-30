@@ -3,6 +3,9 @@
   <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/addons/p5.sound.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Jersey+20&family=Pixelify+Sans:wght@400..700&family=Rampart+One&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8" />
@@ -11,16 +14,23 @@
   <body>
     <main>
       <h1>Drawing line</h1>
-      <div class="nofication">
+      <div class="notification">
         <p id="text">Game on</p>
       </div>
+      <p id="portion">_</p>
     </main>
     <div class="button">
       <button id="tryAgainButton">Try again</button>
       <button id="startButton">Start</button>
       <button id="next">Next</button>
     </div>
-    <script src="sketch.js"></script>
+    <div id="quitPrompt">
+      <div>Do you want to leave the game? </div>
+      <div class="quitPromptAnwser">
+        <a href="../index.html"><button id="yes">Yes</button></a>
+        <button id="no">No</button>
+      </div>
+    </div>
     <div id="footer">
       <div id="volume">
         <div class="function">
@@ -32,5 +42,10 @@
         <img src="../src/door.png"/>
       </div>
     </div>
+    <div id="finish">
+      <p>Good job!!!</p>
+      <p>You ace the game</p>
+    </div>
+    <script src="sketch.js"></script>
   </body>
 </html>
