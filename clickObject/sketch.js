@@ -5,12 +5,18 @@ let randomNum = Math.random();
 let circleX = 350;
 let circleY = 220;
 let radius = 100 / 2;
-let timer = 3;
-let gameStart = true;
+
+let gameStart = false;
+
+let gameScore = 0;
+
+const TIMER_EACH_GAME = 3;
+let timer = TIMER_EACH_GAME;
 
 function distanceTwoPoints([x1, y1], [x2, y2]) {
   return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 }
+
 function draw() {
   background('lightblue');
   
@@ -29,17 +35,16 @@ function draw() {
       textStyle(BOLD);
       gameStart = false;
       finishGame();
+      startButton.style.visibility = "visible";
     }
   }
 }
-
-var gameScore = 0;
 
 function mouseClicked(){
   if(distanceTwoPoints([circleX, circleY], [mouseX, mouseY]) < radius && gameStart === true) {
    circleX = random(0, 500);
    circleY = random(0, 500); 
-   gameScore ++;
+   gameScore++;
   }
 }
 
@@ -50,3 +55,16 @@ function finishGame() {
   score.textContent = `Score: ${gameScore}`;
 }
 
+const startButton = document.getElementById("start");
+
+startButton.addEventListener("click", () => {
+  startButton.style.visibility = "hidden";
+  gameStart = true;
+  startButton.innerHTML= "<p>Try Again</p>";
+  initialize();
+})
+
+function initialize() {
+  timer = TIMER_EACH_GAME;
+  gameScore = 0;
+}
