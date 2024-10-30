@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Jersey+20&family=Pixelify+Sans:wght@400..700&family=Rampart+One&display=swap" rel="stylesheet">
     <title>Sketch</title>
 
     <link rel="stylesheet" type="text/css" href="style.css">
@@ -15,11 +17,15 @@
   <body>
     <main>
       <h1>Clicking Object: Please Click On Circle</h1>
+      <div id="record">
+        <p id="score">Score: 0</p>
+        <p id="timer">Timer: 0</p>
+      </div>
     </main>
     <button>Quit</button>
     <div id="finish">
       <p>Game over</p>
-      <p id="score">_</p>
+      <p id="bestscore">_</p>
     </div>
     <div>
       <button id="start"><p>Start</p></button>

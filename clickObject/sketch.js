@@ -10,7 +10,7 @@ let gameStart = false;
 
 let gameScore = 0;
 
-const TIMER_EACH_GAME = 3;
+const TIMER_EACH_GAME = 5;
 let timer = TIMER_EACH_GAME;
 
 function distanceTwoPoints([x1, y1], [x2, y2]) {
@@ -22,16 +22,12 @@ function draw() {
   
   fill("red");
   circle(circleX, circleY, RADIUS * 2);
-  textSize(35);
   textStyle(BOLD);
-  fill('black')
-  text("Score: "+ gameScore, 15, 35);
-  textSize(35);
-  text("Timer: " + timer, 500, 35);
   
   if (gameStart) {
     if (frameCount % 60 == 0 && timer > 0) {
       timer--;
+      time.textContent = `Timer: ${timer}`;
     }
     if (timer == 0) {
       gameStart = false;
@@ -42,17 +38,26 @@ function draw() {
 
 function mouseClicked(){
   if(distanceTwoPoints([circleX, circleY], [mouseX, mouseY]) < RADIUS && gameStart === true) {
-   circleX = random(0, 500);
-   circleY = random(0, 500); 
+   circleX = random(100, 500);
+   circleY = random(100, 500); 
    gameScore++;
+   score.textContent = `Score: ${gameScore}`;
   }
+}
+
+const score = document.getElementById("score");
+const time = document.getElementById("timer");
+
+function display() {
+  score.textContent = `Score: ${gameScore}`;
+  time.textContent = `Timer: ${timer}`
 }
 
 function finishGame() {
   const finish = document.getElementById("finish");
   finish.style.visibility = "visible";
-  const score = document.getElementById("score");
-  score.textContent = `Score: ${gameScore}`;
+  const bestscore = document.getElementById("bestscore");
+  bestscore.textContent = `Score: ${gameScore}`;
   startButton.style.visibility = "visible";
 }
 
