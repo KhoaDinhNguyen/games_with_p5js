@@ -4,7 +4,7 @@ function setup() {
 let randomNum = Math.random();
 let circleX = 350;
 let circleY = 220;
-let radius = 100 / 2;
+const RADIUS = 100 / 2;
 
 let gameStart = false;
 
@@ -18,11 +18,13 @@ function distanceTwoPoints([x1, y1], [x2, y2]) {
 }
 
 function draw() {
-  background('lightblue');
+  background('white');
   
-  circle(circleX, circleY, radius * 2);
+  fill("red");
+  circle(circleX, circleY, RADIUS * 2);
   textSize(35);
   textStyle(BOLD);
+  fill('black')
   text("Score: "+ gameScore, 15, 35);
   textSize(35);
   text("Timer: " + timer, 500, 35);
@@ -32,16 +34,14 @@ function draw() {
       timer--;
     }
     if (timer == 0) {
-      textStyle(BOLD);
       gameStart = false;
       finishGame();
-      startButton.style.visibility = "visible";
     }
   }
 }
 
 function mouseClicked(){
-  if(distanceTwoPoints([circleX, circleY], [mouseX, mouseY]) < radius && gameStart === true) {
+  if(distanceTwoPoints([circleX, circleY], [mouseX, mouseY]) < RADIUS && gameStart === true) {
    circleX = random(0, 500);
    circleY = random(0, 500); 
    gameScore++;
@@ -53,6 +53,7 @@ function finishGame() {
   finish.style.visibility = "visible";
   const score = document.getElementById("score");
   score.textContent = `Score: ${gameScore}`;
+  startButton.style.visibility = "visible";
 }
 
 const startButton = document.getElementById("start");
