@@ -39,7 +39,7 @@ function draw() {
 
 function mouseClicked(){
   if(distanceTwoPoints([circleX, circleY], [mouseX, mouseY]) < RADIUS && gameStart === true) {
-   circleX = random(100, 500);
+   circleX = random(100, windowWidth - 200);
    circleY = random(100, 500); 
    gameScore++;
    score.textContent = `Score: ${gameScore}`;

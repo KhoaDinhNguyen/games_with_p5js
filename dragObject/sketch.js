@@ -54,7 +54,7 @@ function draw(){
 //check if mouse in within circle
 function mousePressed(){
   let d = dist(mouseX, mouseY, shapeX, shapeY);
-  if(d < r1){
+  if(d < r2){
     shapeMove = true;
   } else {
     shapeMove = false;
@@ -65,7 +65,9 @@ function mousePressed(){
 function mouseReleased(){
   shapeMove = false;
   const distanceBetweenTwoCircle = distance([mouseX, mouseY], [x2, y2]);
-  if (distanceBetweenTwoCircle < r2 && gameStart == true) {
+  console.log(distanceBetweenTwoCircle);
+  console.log(r2 / 2);
+  if (distanceBetweenTwoCircle < r2 / 2 && gameStart == true) {
     console.log("Good");
     gameScore++
     completeLevel = true;
