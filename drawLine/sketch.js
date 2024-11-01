@@ -383,3 +383,14 @@ function updatePortion(numPoints){
   const portion = document.getElementById("portion");
   portion.textContent = `The percentage of current line: ${Math.round(portionPercentage)}%`;
 }
+
+const helpQuit = document.getElementById("helpQuit");
+const helpContent = document.getElementById("helpContent");
+const help = document.getElementById("help");
+
+help.addEventListener("click", () => {
+  helpContent.style.visibility = "visible";
+})
+helpQuit.addEventListener("click", () => {
+  helpContent.style.visibility = "hidden";
+})
