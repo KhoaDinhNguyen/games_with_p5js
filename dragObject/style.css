@@ -12,6 +12,17 @@ canvas {
 #notification {
   display: flex;
   justify-content: space-between;
+  background-color: white;
+
+}
+
+#notification p{
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 10px 20px;
+
+  color: black;
 }
 
 h1 {
@@ -21,6 +32,8 @@ h1 {
   font-style: normal;
   font-size: 3em;
   text-align: center;
+  margin: 0;
+  margin-bottom: 20px;
 }
 
 #finish {
