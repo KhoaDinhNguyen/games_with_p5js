@@ -75,8 +75,6 @@ class Line {
     }
   }
   isFollowed([x ,y]) {
-    console.log(this.follow);
-
     if (this.follow === false) {
       return false;
     }
@@ -141,7 +139,6 @@ class Line {
     for (let i = 0; i < 100; ++i) {
       if(this.checkPoints[i]) this.numPoints++;
     }
-    console.log(this.numPoints);
     return this.numPoints;
   }
 }
@@ -255,11 +252,17 @@ class GameStart {
     currentModel.run();
     if (this.start == false && this.currentModelIndex < this.arrayOfModel.length - 1) {
       nextButton.style.visibility = "visible";
-      text.textContent = "Well done!!! Moving to the next level";
+      notify.textContent = "Well done!!! Moving to the next level";
+      const welldone = new Audio("../src/drawlingGameWellDone.mp3");
+      welldone.volume   = volumeVal;
+      welldone.play().then().catch();
     }
     else if (this.start === false && this.currentModelIndex === this.arrayOfModel.length - 1){
-      text.style.visibility = "hidden";
+      notify.style.visibility = "hidden";
       aceGame.style.visibility = "visible";
+      const win = new Audio("../src/drawlingGameWin.mp3");
+      win.volume = volumeVal;
+      win.play().then().catch();
     }
   }
   correctPoints() {
@@ -301,19 +304,28 @@ function mouseDragged() {
 }
 
 const startButton = document.getElementById("startButton");
-const text = document.getElementById("text");
+const notify = document.getElementById("text");
 const tryAgainButton = document.getElementById("tryAgainButton");
 const nextButton = document.getElementById("next");
 const portion = document.getElementById("portion");
 const aceGame = document.getElementById("finish");
 const notification = document.getElementsByClassName("notification")[0];
+const selectSound = new Audio("../src/selectSound.mp3"); 
+let errorSound = false;
+const volume = document.getElementById("volumn");
+let volumeVal = volume.value;
 
+volume.addEventListener("change", (event) => {
+  volumeVal = event.target.value / 100;
+})
 nextButton.addEventListener("click", () => {
   game.currentModelIndex++;
   nextButton.style.visibility = "hidden";
   startButton.style.visibility = "visible";
-  text.style.visibility = "hidden";
+  notify.style.visibility = "hidden";
   draw();
+  selectSound.volume = volumeVal;
+  selectSound.play().then().catch();
 })
 
 tryAgainButton.addEventListener("click", () => {  
@@ -321,21 +333,33 @@ tryAgainButton.addEventListener("click", () => {
   game.falsePoints().length = 0;
   draw();
   tryAgainButton.style.visibility = "hidden";
-  text.textContent = "Game on";
+  notify.textContent = "Game on";
   game.updateFollow();
+  selectSound.volume = volumeVal;
+  selectSound.play().then().catch();
+  errorSound = false;
 })
 
 function insertError() {
   tryAgainButton.style.visibility = "visible";
-  text.textContent = "Oh no, the line is out";
+  notify.textContent = "Oh no, the line is out";
+  const error = new Audio("../src/drawlingGameStrayLine.mp3");
+  if (!errorSound) {
+    errorSound.volume = volumeVal;
+    error.play().then().catch();
+    errorSound = true;
+  }
+
 }
 
 
 startButton.addEventListener("click", () => {
   game.start = true;
   startButton.style.visibility = "hidden";
-  text.style.visibility = "visible";
-  text.textContent = "Game on";
+  notify.style.visibility = "visible";
+  notify.textContent = "Game on";
+  selectSound.volume = volumeVal;
+  selectSound.play().then().catch();
 })
 
 
