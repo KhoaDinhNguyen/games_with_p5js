@@ -313,7 +313,7 @@ const notification = document.getElementsByClassName("notification")[0];
 const selectSound = new Audio("../src/selectSound.mp3"); 
 let errorSound = false;
 const volume = document.getElementById("volumn");
-let volumeVal = volume.value;
+let volumeVal = volume.value / 100;
 
 volume.addEventListener("change", (event) => {
   volumeVal = event.target.value / 100;

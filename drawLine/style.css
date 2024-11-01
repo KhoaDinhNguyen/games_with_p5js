@@ -3,6 +3,7 @@ html, body {
   padding: 0;
   cursor: default;
   background-color: #0496c7;
+  font-family: sans-serif;
 }
 
 * {
@@ -57,6 +58,48 @@ h1 {
   font-family: sans-serif;
   font-weight: bold;
   font-style: normal;
+}
+
+#help {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  background-color: bisque;
+  padding: 50px;
+  border: 3px solid grey;
+  border-radius: 10px;
+  padding-top: 40px;
+  max-width: 700px;
+  max-height: 400px;
+  overflow-y: scroll;
+
+}
+
+#help h2 {
+  margin: 0;
+  font-weight: 900;
+  text-align: center;
+}
+
+#help h3 {
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 600;
+}
+
+#help::-webkit-scrollbar {
+  width: 10px;
+}
+
+#help::-webkit-scrollbar-track {
+  background-color: bisque;
+  border-radius: 100vw;
+}
+
+#help::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 100vw;
 }
 #startDiv {
   display: flex;
@@ -190,11 +233,12 @@ h1 {
   visibility: hidden;
   font-family: sans-serif;
   font-weight: bold;
-  border: 2px solid blue;
+  border: 2px solid black;
   border-radius: 20px;
   padding: 10px;
   font-size: 1.3rem;
-  background-color: peachpuff;
+  background-color: bisque;
+  z-index: 4;
 }
 
 .quitPromptAnwser {
@@ -232,22 +276,29 @@ h1 {
   text-align: center;
   z-index: 3;
   padding: 30px;
-  border: 5px solid green;
   border-radius: 20px;
-  background-color: white;
+  background-color: rgb(38, 34, 103);
 }
 
-#finish p {
-  color: black;
+#finish p:nth-child(1) {
+  color: yellow;
   font-family: sans-serif;
   font-weight: bold;
   font-size: 2rem;
   margin: 0;
 }
 
-#finish p:nth-child(2) {
-  margin-top: 15px;
+#finish p:nth-child(2), #finish p:nth-child(3) {
+  margin: 0;
+  margin-top: 25px;
+  color: white;
+  font-size: 2rem;
+  font-family: sans-serif;
+  font-weight: bold;
 }
 
+#finish p:nth-child(3) {
+  margin: 0;
+}
 
 
