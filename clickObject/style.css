@@ -4,6 +4,7 @@ html, body {
   background-color: #1abc9c;
   text-align: center;
   user-select: none;
+  font-family: sans-serif;
 }
 canvas {
   display: block;
