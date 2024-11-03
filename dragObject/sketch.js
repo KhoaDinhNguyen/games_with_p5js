@@ -115,6 +115,7 @@ startButton.addEventListener("click", () => {
   select.volume = volume;
   select.play().then().catch();
 
+  helpContent.style.visibility = "hidden";
 
   startButton.style.visibility = "hidden";
   finish.style.visibility = "hidden";
