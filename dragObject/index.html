@@ -6,14 +6,39 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="../src/mushroom.png">
-    <title>Draging Objects</title>
+    <title>Dragging Objects</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Jersey+20&family=Pixelify+Sans:wght@400..700&family=Rampart+One&display=swap" rel="stylesheet">
   </head>
   <body>
+    <div id="help">
+      <img src="../src/question.png" class="function"/>
+    </div>
+    <div id="helpContent">
+      <div id="closeButton">
+        <button id="helpQuit">X</button>
+      </div>
+      <h2>DRAGGING OBJECTS</h2>
+      <h3>About the game</h3>
+      <p>The Dragging Objects is a game that develops the user's fine motor skills by challenging the user to find the circle that needs to be moved into a specific targeted location.</p>
+      <h3>How to play</h3>
+      <ul>
+        <li><p>Click "Start" to play the game.</p></li>
+        <li><p>Drag the yellow circle to the dotted circle on the white screen.</p></li>
+        <li><p>There is a timer countdown to 0.</p></li>
+        <li><p>At 0, the current score is record.</p></li>
+        <li><p>Click on "Try Again" to play new game. Best score is always record.</p></li>
+      </ul>
+      <h3>Purpose</h3>
+      <p>The Dragging Objects supports children to get acquainted with directions.</p>
+      <h3>Video instruction</h3>
+      <video controls controlslist="nodownload" width="500">
+        <source src="../src/draggingObject.mp4" type="video/mp4"/>
+      </video>
+    </div>
     <main>
-      <h1>Draging Objects: Drags Shape to Designated Area</h1>
+      <h1>Dragging Objects: Drags Shape to Designated Area</h1>
       <div id="notification">
         <p id="score">Score: 0</p>
         <p id="result">Run game</p>

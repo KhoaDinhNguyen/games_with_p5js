@@ -6,7 +6,7 @@ function setup() {
 const r = 40;
 const R = r * 1.25;
 
-const TIME_EACH_GAME = 10;
+const TIME_EACH_GAME = 21;
 let timer = TIME_EACH_GAME;
 
 let shapeY = 50;
@@ -154,4 +154,16 @@ let volume = getVolume.value / 100;
 
 getVolume.addEventListener("change", (event) => {
   volume = event.target.value / 100;
+});
+
+const helpContent = document.getElementById("helpContent");
+const helpQuit = document.getElementById("helpQuit");
+const help = document.getElementById("help");
+
+helpQuit.addEventListener("click", () => {
+  helpContent.style.visibility = "hidden";
+});
+
+help.addEventListener("click", () => {
+  helpContent.style.visibility = "visible";
 })

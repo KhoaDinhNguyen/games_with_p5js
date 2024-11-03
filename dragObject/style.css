@@ -148,3 +148,70 @@ footer {
   display: flex;
   justify-content: space-between;
 }
+
+
+#help {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0;
+}
+
+#helpContent {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  background-color: bisque;
+  padding: 50px;
+  border: 3px solid grey;
+  border-radius: 10px;
+  padding-top: 40px;
+  max-width: 700px;
+  max-height: 400px;
+  overflow-y: scroll;
+  text-align: justify;
+  z-index: 2;
+}
+
+#closeButton {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -40px;
+  margin-right: -50px;
+}
+
+#closeButton button {
+  background-color: #e93b3b;
+  font-size: 1.5em;
+  padding: 5px 15px;
+  font-weight: bold;
+  color: white;
+  border: #e93b3b 1px solid;
+  border-radius: 10px;
+}
+
+#helpContent h2 {
+  margin: 0;
+  font-weight: 900;
+  text-align: center;
+}
+
+#helpContent h3 {
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 600;
+}
+
+#helpContent::-webkit-scrollbar {
+  width: 10px;
+}
+
+#helpContent::-webkit-scrollbar-track {
+  background-color: bisque;
+  border-radius: 100vw;
+}
+
+#helpContent::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 100vw;
+}
