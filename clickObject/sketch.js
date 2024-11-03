@@ -114,7 +114,7 @@ noQuit.addEventListener("click", () => {
   quitPrompt.style.visibility = "hidden";
 })
 
-let volume = 0;
+let volume = document.getElementById("volumn").value / 100;
 const getVolumn = document.getElementById("volumn");
 
 getVolumn.addEventListener("change", (event) => {
