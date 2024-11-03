@@ -118,3 +118,15 @@ function finishGame() {
   currentScore.textContent = `Current Score: ${gameScore}`;
   bestScoreText.textContent = `Best Score: ${bestScore}`;
 }
+
+const quitPrompt = document.getElementById("quitPrompt");
+const quit = document.getElementById("quit");
+const noQuit = document.getElementById("no");
+
+noQuit.addEventListener("click", () => {
+  quitPrompt.style.visibility = "hidden";
+})
+
+quit.addEventListener("click", () => {
+  quitPrompt.style.visibility = "visible";
+})
