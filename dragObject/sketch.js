@@ -39,6 +39,9 @@ function draw(){
       time.textContent = `Timer: ${timer}`;
     }
     else if (timer == 0) {
+      const win = new Audio("../src/dragingObjectWin.mp3");
+      win.volume = volume;
+      win.play().then().catch(); 
       gameStart = false;
       finishGame();
     }
@@ -60,13 +63,24 @@ function mouseReleased(){
   shapeMove = false;
   const distanceBetweenTwoCircle = distance([mouseX, mouseY], [x2, y2]);
   if (distanceBetweenTwoCircle + r <= R && gameStart == true) {
+    const correct = new Audio("../src/dragingObjectCorrect.mp3");
+    correct.volume = volume;
+    correct.play().then().catch();
     result.textContent = "Good job";
-    gameScore++
+    gameScore++;
+    if (gameScore > 0 && gameScore % 5 == 0) {
+      const record = new Audio("../src/clickingObjectRecord.mp3");
+      record.volume = volume;
+      record.play().then().catch();
+    }
     score.textContent = `Score: ${gameScore}`;
     x2 = random(100, windowWidth - 200);
     y2 = random(100, 400);
   }
   else if (gameStart == true) {
+    const wrong = new Audio("../src/drawlingGameStrayLine.mp3");
+    wrong.volume = volume;
+    wrong.play().then().catch();
     result.textContent = "Wrong location";
   }
   else {
@@ -96,6 +110,10 @@ function intialize() {
 }
 startButton.addEventListener("click", () => {
   const finish = document.getElementById("finish");
+
+  const select = new Audio("../src/selectSound.mp3");
+  select.volume = volume;
+  select.play().then().catch();
 
 
   startButton.style.visibility = "hidden";
@@ -129,4 +147,11 @@ noQuit.addEventListener("click", () => {
 
 quit.addEventListener("click", () => {
   quitPrompt.style.visibility = "visible";
+})
+
+const getVolume = document.getElementById("volumn");
+let volume = getVolume.value / 100;
+
+getVolume.addEventListener("change", (event) => {
+  volume = event.target.value / 100;
 })
