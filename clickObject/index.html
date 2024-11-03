@@ -6,17 +6,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Jersey+20&family=Pixelify+Sans:wght@400..700&family=Rampart+One&display=swap" rel="stylesheet">
-    <title>Sketch</title>
-
+    <title>Clicking objects</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" type="text/css" href="style.css">
-
+    <link rel="icon" type="image/png" href="../src/mushroom.png">
     <script src="libraries/p5.min.js"></script>
     <script src="libraries/p5.sound.min.js"></script>
   </head>
 
   <body>
     <main>
-      <h1>Clicking Object: Please Click On Circle</h1>
+      <h1>Clicking Objects: Please Click On Circle</h1>
       <div id="record">
         <p id="score">Score: 0</p>
         <p id="timer">Timer: 0</p>
@@ -25,13 +25,23 @@
     <button id="start"><p>START</p></button>
     <br>
     <footer>
-      <p>Volumn</p>
-      <a href="../index.html"><img src="../src/door.png" alt="quit" id="quit"/></a>
+      <div id="volumnPrompt"> 
+        <img src="../src/volume.png" class="function"/>
+        <input id="volumn" name="volumn" type="range" min="0" max="100"/>
+      </div>
+      <img src="../src/door.png" alt="quit" id="quit"  class="function"/>
     </footer>
     <div id="finish">
       <p>GAME OVER</p>
       <p id="currentscore">_</p>
       <p id="bestscore">_</p>
+    </div>
+    <div id="quitPrompt">
+      <div>Do you want to leave the game? </div>
+      <div class="quitPromptAnwser">
+        <a href="../index.html"><button id="yes">Yes</button></a>
+        <button id="no">No</button>
+      </div>
     </div>
     <script src="sketch.js"></script>
   </body>
