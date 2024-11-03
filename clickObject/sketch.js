@@ -11,7 +11,7 @@ let gameStart = false;
 let gameScore = 0;
 let bestScore = 0;
 
-const TIMER_EACH_GAME = 10;
+const TIMER_EACH_GAME = 20;
 let timer = TIMER_EACH_GAME;
 
 function distanceTwoPoints([x1, y1], [x2, y2]) {
@@ -91,9 +91,9 @@ startButton.addEventListener("click", () => {
   startButton.innerHTML= "<p>TRY AGAIN</p>";
   initialize();
 
-
   const finish = document.getElementById("finish");
   finish.style.visibility = "hidden";
+  helpContent.style.visibility = "hidden";
 })
 
 function initialize() {
@@ -119,4 +119,16 @@ const getVolumn = document.getElementById("volumn");
 
 getVolumn.addEventListener("change", (event) => {
   volume = event.target.value / 100;
+})
+
+const help = document.getElementById("help");
+const helpContent = document.getElementById("helpContent");
+const helpQuit = document.getElementById("helpQuit");
+
+helpQuit.addEventListener("click", () => {
+  helpContent.style.visibility = "hidden";
+})
+
+help.addEventListener("click", () => {
+  helpContent.style.visibility = "visible";
 })
