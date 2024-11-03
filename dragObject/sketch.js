@@ -60,17 +60,17 @@ function mouseReleased(){
   shapeMove = false;
   const distanceBetweenTwoCircle = distance([mouseX, mouseY], [x2, y2]);
   if (distanceBetweenTwoCircle + r <= R && gameStart == true) {
-    result.textContent = "Good";
+    result.textContent = "Good job";
     gameScore++
     score.textContent = `Score: ${gameScore}`;
     x2 = random(100, windowWidth - 200);
     y2 = random(100, 400);
   }
   else if (gameStart == true) {
-    result.textContent = "Bad";
+    result.textContent = "Wrong location";
   }
   else {
-    result.textContent = "Result"
+    result.textContent = "Run game";
   }
 } 
 
