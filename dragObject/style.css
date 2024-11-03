@@ -67,3 +67,19 @@ h1 {
   margin: 0;
   margin-bottom: 10px;
 }
+
+
+#start {
+  margin: 0 auto;
+  width: max-content;
+  display: block;
+  background-color: rgb(245, 64, 64);
+  color: white;
+  border-radius: 50%;
+  border: 1px rgb(255, 0, 0) solid;
+  font-size: 1.5rem;
+  padding: 0 10px;
+  margin-top: 10px;
+  font-weight: 700;
+}
+
