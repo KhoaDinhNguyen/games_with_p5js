@@ -6,7 +6,7 @@ function setup() {
 const r = 40;
 const R = r * 1.25;
 
-const TIME_EACH_GAME = 5;
+const TIME_EACH_GAME = 10;
 let timer = TIME_EACH_GAME;
 
 let shapeY = 50;
@@ -17,6 +17,7 @@ let y2 = 335;
 let shapeMove = false;
 let gameStart = false;
 let gameScore = 0;
+let bestScore = 0;
 
 function distance ([x1, y1], [x2, y2]) {
   return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
@@ -86,23 +87,34 @@ const result = document.getElementById("result");
 const time = document.getElementById("timer");
 const score = document.getElementById("score");
 const startButton = document.getElementById("start");
-const currentScore = document.getElementById("currentscore");
-const finish = document.getElementById("finish");
 
 function intialize() {
   timer = TIME_EACH_GAME;
   gameScore = 0;
   gameStart = true;
+  score.textContent = `Score: ${gameScore}`;
 }
 startButton.addEventListener("click", () => {
+  const finish = document.getElementById("finish");
+
+
   startButton.style.visibility = "hidden";
   finish.style.visibility = "hidden";
   intialize();
 });
 
 function finishGame() {
+  const currentScore = document.getElementById("currentscore");
+  const finish = document.getElementById("finish");
+  const bestScoreText = document.getElementById("bestscore");
+
+  if (bestScore < gameScore) {
+    bestScore = gameScore;
+  }
+
   finish.style.visibility = "visible";
   startButton.style.visibility = "visible";
   startButton.innerHTML = "<p>Try Again</p>";
-  currentScore.textContent = `Score: ${gameScore}`;
+  currentScore.textContent = `Current Score: ${gameScore}`;
+  bestScoreText.textContent = `Best Score: ${bestScore}`;
 }

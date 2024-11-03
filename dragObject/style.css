@@ -42,4 +42,28 @@ h1 {
   top: 50%;
   left: 50%;
   visibility: hidden;
+  background-color: rgb(12, 9, 52);
+  z-index: 1;
+  padding: 5px;
+  border: 5px solid black;
+  border-radius: 20px;
+}
+
+#finish p:nth-child(1) {
+  padding: 0 30px;
+  font-size: 2rem;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: yellow;
+  margin-bottom: 30px;
+}
+
+#finish p:nth-child(2), #finish p:nth-child(3) {
+  padding: 0 30px;
+  font-size: 1.3rem;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+  margin-bottom: 10px;
 }
