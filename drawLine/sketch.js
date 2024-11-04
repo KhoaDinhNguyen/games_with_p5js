@@ -360,6 +360,7 @@ startButton.addEventListener("click", () => {
   notify.textContent = "Game on";
   selectSound.volume = volumeVal;
   selectSound.play().then().catch();
+  helpContent.style.visibility = "hidden";
 })
 
 

@@ -5,10 +5,12 @@
 }
 * {
   z-index: 1;
+
 }
 html, body {
   margin: 0;
   padding: 0;
+  font-family: sans-serif;
 }
 
 * {
@@ -103,7 +105,7 @@ figcaption {
 
 h2 {
   margin: 20px;
-  font-family: "Bubblegum Sans", sans-serif;
+  font-family: sans-serif;
   font-weight: 400;
   font-style: normal;
 }
