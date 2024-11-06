@@ -85,6 +85,10 @@ header a:visited {
   text-decoration: none;
 }
 
+#self {
+  background-color: grey;
+}
+
 #help {
   display: flex;
   justify-content: flex-end;
