@@ -361,6 +361,9 @@ startButton.addEventListener("click", () => {
   selectSound.volume = volumeVal;
   selectSound.play().then().catch();
   helpContent.style.visibility = "hidden";
+  const video = document.querySelector("video");
+  video.pause();
+  video.currentTime = 0;
 })
 
 
@@ -394,4 +397,7 @@ help.addEventListener("click", () => {
 })
 helpQuit.addEventListener("click", () => {
   helpContent.style.visibility = "hidden";
+  const video = document.querySelector("video");
+  video.pause();
+  video.currentTime = 0;
 })

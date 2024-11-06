@@ -116,7 +116,9 @@ startButton.addEventListener("click", () => {
   select.play().then().catch();
 
   helpContent.style.visibility = "hidden";
-
+  const video = document.querySelector("video");
+  video.pause();
+  video.currentTime = 0;
   startButton.style.visibility = "hidden";
   finish.style.visibility = "hidden";
   intialize();
@@ -163,6 +165,9 @@ const help = document.getElementById("help");
 
 helpQuit.addEventListener("click", () => {
   helpContent.style.visibility = "hidden";
+  const video = document.querySelector("video");
+  video.pause();
+  video.currentTime = 0;
 });
 
 help.addEventListener("click", () => {

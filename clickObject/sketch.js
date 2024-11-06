@@ -94,6 +94,9 @@ startButton.addEventListener("click", () => {
   const finish = document.getElementById("finish");
   finish.style.visibility = "hidden";
   helpContent.style.visibility = "hidden";
+  const video = document.querySelector("video");
+  video.pause();
+  video.currentTime = 0;
 })
 
 function initialize() {
@@ -127,8 +130,15 @@ const helpQuit = document.getElementById("helpQuit");
 
 helpQuit.addEventListener("click", () => {
   helpContent.style.visibility = "hidden";
+  const video = document.querySelector("video");
+  video.pause();
+  video.currentTime = 0;
 })
 
 help.addEventListener("click", () => {
   helpContent.style.visibility = "visible";
 })
+
+
+
+// Stop = pause + reset the playhead
