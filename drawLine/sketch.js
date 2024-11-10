@@ -305,26 +305,9 @@ function mouseDragged() {
 
 /* ================================ INTERACTION ================================ */
 
-/* -------------------------------- HELP BUTTON -------------------------------- */
-const helpButton = document.getElementById("helpButton");
-const helpContent = document.getElementById("helpContent");
-const helpQuit = document.getElementById("helpQuit");
-
-helpButton.addEventListener("click", () => {
-  helpContent.style.visibility = "visible";
-});
-
-helpQuit.addEventListener("click", () => {
-  helpContent.style.visibility = "hidden";
-  const video = document.querySelector("video");
-  video.pause();
-  video.currentTime = 0;
-});
-
 /* -------------------------------- VARIALBES -------------------------------- */
 const gameProcess = document.getElementById("gameProcess");
 const selectSound = new Audio("../src/selectSound.mp3");
-
 
 const portion = document.getElementById("lineProcess");
 const aceGame = document.getElementById("finishGame");
@@ -351,6 +334,22 @@ function updatePortion(numPoints){
   const portion = document.getElementById("lineProcess");
   portion.textContent = `The percentage of current line: ${Math.round(portionPercentage)}%`;
 }
+
+/* -------------------------------- HELP BUTTON -------------------------------- */
+const helpButton = document.getElementById("helpButton");
+const helpContent = document.getElementById("helpContent");
+const helpQuit = document.getElementById("helpQuit");
+
+helpButton.addEventListener("click", () => {
+  helpContent.style.visibility = "visible";
+});
+
+helpQuit.addEventListener("click", () => {
+  helpContent.style.visibility = "hidden";
+  const video = document.querySelector("video");
+  video.pause();
+  video.currentTime = 0;
+});
 
 /* -------------------------------- START BUTTON -------------------------------- */
 const startButton = document.getElementById("startButton");
@@ -427,6 +426,7 @@ no.addEventListener("click", () => {
 /* -------------------------------- VOLUME BUTTON -------------------------------- */
 const volume = document.getElementById("volume");
 let volumeVal = volume.value / 100;
+console.log(volumeVal);
 
 volume.addEventListener("change", (event) => {
   volumeVal = event.target.value / 100;
