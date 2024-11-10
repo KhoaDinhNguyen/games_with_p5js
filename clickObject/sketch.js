@@ -11,7 +11,7 @@ let gameStart = false;
 let gameScore = 0;
 let bestScore = 0;
 
-const TIMER_EACH_GAME = 20;
+let TIMER_EACH_GAME = 20;
 let timer = TIMER_EACH_GAME;
 
 function distanceTwoPoints([x1, y1], [x2, y2]) {
@@ -97,6 +97,7 @@ startButton.addEventListener("click", () => {
   const video = document.querySelector("video");
   video.pause();
   video.currentTime = 0;
+  timerDisplay.style.visibility = "hidden";
 })
 
 function initialize() {
@@ -139,6 +140,20 @@ help.addEventListener("click", () => {
   helpContent.style.visibility = "visible";
 })
 
-
-
+const timerDisplay = document.getElementById("timerDisplay");
+const level1 = document.getElementById("level_1");
+const level2 = document.getElementById("level_2");
+const level3 = document.getElementById("level_3");
 // Stop = pause + reset the playhead
+
+level1.addEventListener("click", () => {
+  TIMER_EACH_GAME = 20;
+});
+
+level2.addEventListener("click", () => {
+  TIMER_EACH_GAME = 30;
+});
+
+level3.addEventListener("click", () => {
+  TIMER_EACH_GAME = 45;
+});
