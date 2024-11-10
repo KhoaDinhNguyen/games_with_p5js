@@ -1,86 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- p5.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/addons/p5.sound.min.js"></script>
+
+    <!-- import font style from google font: https://fonts.google.com/specimen/Jersey+20 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Jersey+20&family=Pixelify+Sans:wght@400..700&family=Rampart+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+20&display=swap" rel="stylesheet">
+
     <title>Drawling Line</title>
+
+    <!-- page view -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1">
+
+    <!-- Upload stye and icon-->
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="icon" type="image/png" href="../src/mushroom.png">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
   </head>
   <body>
+    <header>
+      <!-- Navigation bar-->
+      <nav>
+        <ul>
+          <li><a href="../index.html">Homepage</a></li>
+          <li><a id="self">Drawing lines</a></li>
+          <li><a href="../dragObject/index.html">Dragging objects</a></li>
+          <li><a href="../clickObject/index.html">Clicking objects</a></li>
+          <li><div class="function" id="helpButton"><img src="../src/question.png" alt="helpButton"></div></li>
+        </ul>
+      </nav>
+
+      <!-- Help content-->
+      <div id="helpContent">
+        <button id="helpQuit">X</button>
+        <!-- Game information-->
+        <h2>DRAWING LINES</h2>
+        <h3>About the game</h3>
+        <p>The Drawing Lines is a toddler friendly game that is able to help control fine movements of the user by having to draw over dotted lines. </p>
+        <h3>How to play</h3>
+        <ul>
+          <li><p>Click "Start" to play the game.</p></li>
+          <li><p>Follow the dot line to finish the drawing.</p></li>
+          <li><p>Click "Next" to have more diffcult level.</p></li>
+          <li><p>Try to finish all four levels and record the fastest finishes.</p></li>
+          <li><p>Click on "Try Again" if draw outsice the dotted line.</p></li>
+        </ul>
+        <h3>Purpose</h3>
+        <p>Drawing Lines is able to grow toddlers skills in being able to have a greater control over their movements by drawing in straight lines</p>
+        <h3>Video instruction</h3>
+        
+        <!-- Video instruction-->
+        <video controls width="500">
+          <source src="../src/drawlingLine.mp4" type="video/mp4">
+        </video>
+      </div>
+      <!--End of header-->
+    </header>
+
     <main>
-      <header>
-        <a href="../index.html">Homepage</a>
-        <a id="self">Drawing lines</a>
-        <a href="../dragObject/index.html">Dragging objects</a>
-        <a href="../clickObject/index.html">Clicking objects</a>
-        <div id="help">
-          <div class="function">
-            <img src="../src/question.png"/>
-          </div>
-        </div>
-      </header>
-      <h1>Drawing Lines: Follow Dotted Line</h1>
+      <h1>Drawing Lines: Follow Dotted Lines</h1>
       <div class="notification">
         <p id="text">Game on</p>
       </div>
       <p id="portion">_</p>
     </main>
-    <div id="helpContent">
-      <div id="closeButton">
-        <button id="helpQuit">X</button>
+
+    <footer>
+      <div class="button">
+        <button id="tryAgainButton">Try again</button>
+        <button id="startButton">Start</button>
+        <button id="next">Next</button>
       </div>
-      <h2>DRAWING LINES</h2>
-      <h3>About the game</h3>
-      <p>The Drawing Lines is a toddler friendly game that is able to help control fine movements of the user by having to draw over dotted lines. </p>
-      <h3>How to play</h3>
-      <ul>
-        <li><p>Click "Start" to play the game.</p></li>
-        <li><p>Follow the dot line to finish the drawing.</p></li>
-        <li><p>Click "Next" to have more diffcult level.</p></li>
-        <li><p>Try to finish all four levels and record the fastest finishes.</p></li>
-        <li><p>Click on "Try Again" if draw outsice the dotted line.</p></li>
-      </ul>
-      <h3>Purpose</h3>
-      <p>Drawing Lines is able to grow toddlers skills in being able to have a greater control over their movements by drawing in straight lines</p>
-      <h3>Video instruction</h3>
-      <video controls controlslist="nodownload" width="500">
-        <source src="../src/drawlingLine.mp4" type="video/mp4"/>
-      </video>
-    </div>
-    <div class="button">
-      <button id="tryAgainButton">Try again</button>
-      <button id="startButton">Start</button>
-      <button id="next">Next</button>
-    </div>
-    <div id="quitPrompt">
-      <div>Do you want to leave the game? </div>
-      <div class="quitPromptAnwser">
-        <a href="../index.html"><button id="yes">Yes</button></a>
-        <button id="no">No</button>
-      </div>
-    </div>
-    <div id="footer">
-      <div id="volume">
-        <div class="function">
-          <img src="../src/volume.png"/>
+      <div id="quitPrompt">
+        <div>Do you want to leave the game? </div>
+        <div class="quitPromptAnwser">
+          <a href="../index.html"><button id="yes">Yes</button></a>
+          <button id="no">No</button>
         </div>
-        <input name="volumn" id="volumn" type="range" min="0" max="100"/>
       </div>
-      <div id="quit" class="function">
-        <img src="../src/door.png"/>
+      <div id="footer">
+        <div id="volume">
+          <div class="function">
+            <img src="../src/volume.png"/>
+          </div>
+          <input name="volumn" id="volumn" type="range" min="0" max="100"/>
+        </div>
+        <div id="quit" class="function">
+          <img src="../src/door.png"/>
+        </div>
       </div>
-    </div>
-    <div id="finish">
-      <p>GOOD JOB!!!</p>
-      <p>You ace the game</p>
-      <p>=^.^=</p>
-    </div>
+      <div id="finish">
+        <p>GOOD JOB!!!</p>
+        <p>You ace the game</p>
+        <p>=^.^=</p>
+      </div>
+    </footer>
+
     <script src="sketch.js"></script>
   </body>
 </html>

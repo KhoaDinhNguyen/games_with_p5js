@@ -1,33 +1,126 @@
+/* =============================== GENERAL =============================== */
 html, body {
   margin: 0;
   padding: 0;
-  cursor: default;
-  background-color: #0496c7;
   font-family: sans-serif;
-}
-
-* {
+  background-color: #0496c7;
+  cursor: default;
   user-select: none;
 }
+
 canvas {
   display: block;
 }
 
+/* =============================== HEADER =============================== */
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  margin-top: 0;
+}
+
+nav a{
+  font-weight: bold;
+  font-size: 1.3em;
+  text-decoration: none;
+  background-color: #ecd079;
+  border: black 2px solid;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-top: 0;
+  padding: 5px 15px;
+}
+
+nav a:visited {
+  text-decoration: none;
+  color: black;
+
+}
+
+#self {
+  background-color: grey;
+}
+
+#helpButton {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0;
+  margin-right: 10px;
+}
+
+#helpContent {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  background-color: bisque;
+  padding: 50px;
+  border: 3px solid grey;
+  border-radius: 10px;
+  padding-top: 10px;
+  max-width: 700px;
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+#helpQuit{
+  position: relative;
+  left: 100%;
+  background-color: #e93b3b;
+  font-size: 1.5em;
+  padding: 5px 15px;
+  font-weight: bold;
+  color: white;
+  border: #e93b3b 1px solid;
+  border-radius: 10px;
+  top: 100%;
+}
+
+#helpContent h2 {
+  margin: 0;
+  font-weight: 900;
+  text-align: center;
+}
+
+#helpContent h3 {
+  font-size: 1.2rem;
+  font-style: italic;
+  font-weight: 600;
+}
+
+#helpContent::-webkit-scrollbar {
+  width: 10px;
+}
+
+#helpContent::-webkit-scrollbar-track {
+  background-color: bisque;
+  border-radius: 100vw;
+}
+
+#helpContent::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 100vw;
+}
+
+
+/* =============================== MAIN =============================== */
 .footer {
   display: flex;
   justify-content: space-between;
 }
 
 h1 {
-  color: yellow;
-  margin: 0;
-  text-align: center;
-  padding: 10px 0;
   font-family: "Jersey 20", sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: 3em;
+  color: yellow;
+  text-align: center;
+  margin: 0;
   margin-top: -15px;
+  padding: 10px 0;
 }
 
 .notification {
@@ -61,99 +154,6 @@ h1 {
   font-style: normal;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 0;
-}
-
-header a{
-  background-color: #ecd079;
-  padding: 5px 15px;
-  border: black 2px solid;
-  border-radius: 10px;
-  font-weight: bold;
-  text-decoration: none;
-  margin-left: 10px;
-  font-size: 1.3em;
-  margin-top: 0;
-}
-
-header a:visited {
-  color: black;
-  text-decoration: none;
-}
-
-#self {
-  background-color: grey;
-}
-
-#help {
-  display: flex;
-  justify-content: flex-end;
-  margin: 0;
-  margin-right: 10px;
-}
-
-#helpContent {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
-  background-color: bisque;
-  padding: 50px;
-  border: 3px solid grey;
-  border-radius: 10px;
-  padding-top: 40px;
-  max-width: 700px;
-  max-height: 400px;
-  overflow-y: scroll;
-
-}
-
-#closeButton {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: -40px;
-  margin-right: -50px;
-}
-
-#closeButton button {
-  background-color: #e93b3b;
-  font-size: 1.5em;
-  padding: 5px 15px;
-  font-weight: bold;
-  color: white;
-  border: #e93b3b 1px solid;
-  border-radius: 10px;
-}
-
-#helpContent h2 {
-  margin: 0;
-  font-weight: 900;
-  text-align: center;
-}
-
-#helpContent h3 {
-  font-size: 1.2rem;
-  font-style: italic;
-  font-weight: 600;
-}
-
-#helpContent::-webkit-scrollbar {
-  width: 10px;
-}
-
-#helpContent::-webkit-scrollbar-track {
-  background-color: bisque;
-  border-radius: 100vw;
-}
-
-#helpContent::-webkit-scrollbar-thumb {
-  background-color: gray;
-  border-radius: 100vw;
-}
 #startDiv {
   display: flex;
   justify-content: center;

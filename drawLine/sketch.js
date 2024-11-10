@@ -390,7 +390,7 @@ function updatePortion(numPoints){
 
 const helpQuit = document.getElementById("helpQuit");
 const helpContent = document.getElementById("helpContent");
-const help = document.getElementById("help");
+const help = document.getElementById("helpButton");
 
 help.addEventListener("click", () => {
   helpContent.style.visibility = "visible";
