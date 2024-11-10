@@ -16,13 +16,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width initial-scale=1">
 
-    <!-- Upload stye and icon-->
+    <!-- Upload stye and icon -->
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="icon" type="image/png" href="../src/mushroom.png">
   </head>
   <body>
     <header>
-      <!-- Navigation bar-->
+      <!-- Navigation bar -->
       <nav>
         <ul>
           <li><a href="../index.html">Homepage</a></li>
@@ -33,10 +33,10 @@
         </ul>
       </nav>
 
-      <!-- Help content-->
+      <!-- Help content -->
       <div id="helpContent">
         <button id="helpQuit">X</button>
-        <!-- Game information-->
+        <!-- Game information -->
         <h2>DRAWING LINES</h2>
         <h3>About the game</h3>
         <p>The Drawing Lines is a toddler friendly game that is able to help control fine movements of the user by having to draw over dotted lines. </p>
@@ -52,53 +52,61 @@
         <p>Drawing Lines is able to grow toddlers skills in being able to have a greater control over their movements by drawing in straight lines</p>
         <h3>Video instruction</h3>
         
-        <!-- Video instruction-->
+        <!-- Video instruction -->
         <video controls width="500">
           <source src="../src/drawlingLine.mp4" type="video/mp4">
         </video>
       </div>
-      <!--End of header-->
+      <!-- End of header -->
     </header>
 
     <main>
       <h1>Drawing Lines: Follow Dotted Lines</h1>
-      <div class="notification">
-        <p id="text">Game on</p>
+      <div id="notification">
+        <p id="gameProcess">Game on</p>
       </div>
-      <p id="portion">_</p>
+      <p id="lineProcess">Percentage of the current line: 0%</p>
+      <!-- End of main -->
     </main>
 
     <footer>
-      <div class="button">
+      <!-- Gameplay button -->
+      <div id="button">
         <button id="tryAgainButton">Try again</button>
         <button id="startButton">Start</button>
-        <button id="next">Next</button>
+        <button id="nextButton">Next</button>
       </div>
+
+      <!-- Volume and Quit button -->
+      <div id="volumeAndQuitButton">
+        <div id="sound">
+          <img class="function" src="../src/volume.png" alt="volume">
+          <input name="volume" id="volume" type="range" min="0" max="1" step="0.01">
+        </div>
+        <img id="quitButton" class="function" src="../src/door.png" alt="quit">
+      </div>
+
+      <!-- Quit Prompt -->
       <div id="quitPrompt">
-        <div>Do you want to leave the game? </div>
+        <div>Do you want to leave the game?</div>
         <div class="quitPromptAnwser">
-          <a href="../index.html"><button id="yes">Yes</button></a>
-          <button id="no">No</button>
+          <p><a href="../index.html">Yes</a></p>
+          <p id="no">No</p>
         </div>
       </div>
-      <div id="footer">
-        <div id="volume">
-          <div class="function">
-            <img src="../src/volume.png"/>
-          </div>
-          <input name="volumn" id="volumn" type="range" min="0" max="100"/>
-        </div>
-        <div id="quit" class="function">
-          <img src="../src/door.png"/>
-        </div>
-      </div>
-      <div id="finish">
+
+      <!-- Ace game -->
+      <div id="finishGame">
         <p>GOOD JOB!!!</p>
         <p>You ace the game</p>
         <p>=^.^=</p>
       </div>
+      <!-- End of footer -->
     </footer>
 
+    <!-- Load the sketch from p5.js -->
     <script src="sketch.js"></script>
+
+    <!-- End of body -->
   </body>
 </html>

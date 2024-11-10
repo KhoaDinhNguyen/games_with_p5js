@@ -252,13 +252,13 @@ class GameStart {
     currentModel.run();
     if (this.start == false && this.currentModelIndex < this.arrayOfModel.length - 1) {
       nextButton.style.visibility = "visible";
-      notify.textContent = "Well done!!! Moving to the next level";
+      gameProcess.textContent = "Well done!!! Moving to the next level";
       const welldone = new Audio("../src/drawlingGameWellDone.mp3");
-      welldone.volume   = volumeVal;
+      welldone.volume = volumeVal;
       welldone.play().then().catch();
     }
     else if (this.start === false && this.currentModelIndex === this.arrayOfModel.length - 1){
-      notify.style.visibility = "hidden";
+      gameProcess.style.visibility = "hidden";
       aceGame.style.visibility = "visible";
       const win = new Audio("../src/drawlingGameWin.mp3");
       win.volume = volumeVal;
@@ -303,46 +303,37 @@ function mouseDragged() {
   }
 }
 
-const startButton = document.getElementById("startButton");
-const notify = document.getElementById("text");
-const tryAgainButton = document.getElementById("tryAgainButton");
-const nextButton = document.getElementById("next");
-const portion = document.getElementById("portion");
-const aceGame = document.getElementById("finish");
-const notification = document.getElementsByClassName("notification")[0];
-const selectSound = new Audio("../src/selectSound.mp3"); 
+/* ================================ INTERACTION ================================ */
+
+/* -------------------------------- HELP BUTTON -------------------------------- */
+const helpButton = document.getElementById("helpButton");
+const helpContent = document.getElementById("helpContent");
+const helpQuit = document.getElementById("helpQuit");
+
+helpButton.addEventListener("click", () => {
+  helpContent.style.visibility = "visible";
+});
+
+helpQuit.addEventListener("click", () => {
+  helpContent.style.visibility = "hidden";
+  const video = document.querySelector("video");
+  video.pause();
+  video.currentTime = 0;
+});
+
+/* -------------------------------- VARIALBES -------------------------------- */
+const gameProcess = document.getElementById("gameProcess");
+const selectSound = new Audio("../src/selectSound.mp3");
+
+
+const portion = document.getElementById("lineProcess");
+const aceGame = document.getElementById("finishGame");
+
 let errorSound = false;
-const volume = document.getElementById("volumn");
-let volumeVal = volume.value / 100;
-
-volume.addEventListener("change", (event) => {
-  volumeVal = event.target.value / 100;
-})
-nextButton.addEventListener("click", () => {
-  game.currentModelIndex++;
-  nextButton.style.visibility = "hidden";
-  startButton.style.visibility = "visible";
-  notify.style.visibility = "hidden";
-  draw();
-  selectSound.volume = volumeVal;
-  selectSound.play().then().catch();
-})
-
-tryAgainButton.addEventListener("click", () => {  
-  game.correctPoints().length = 0;
-  game.falsePoints().length = 0;
-  draw();
-  tryAgainButton.style.visibility = "hidden";
-  notify.textContent = "Game on";
-  game.updateFollow();
-  selectSound.volume = volumeVal;
-  selectSound.play().then().catch();
-  errorSound = false;
-})
 
 function insertError() {
   tryAgainButton.style.visibility = "visible";
-  notify.textContent = "Oh no, the line is out";
+  gameProcess.textContent = "Oh no, the line is out";
   const error = new Audio("../src/drawlingGameStrayLine.mp3");
   if (!errorSound) {
     errorSound.volume = volumeVal;
@@ -352,52 +343,91 @@ function insertError() {
 
 }
 
-
-startButton.addEventListener("click", () => {
-  game.start = true;
-  startButton.style.visibility = "hidden";
-  notify.style.visibility = "visible";
-  notify.textContent = "Game on";
-  selectSound.volume = volumeVal;
-  selectSound.play().then().catch();
-  helpContent.style.visibility = "hidden";
-  const video = document.querySelector("video");
-  video.pause();
-  video.currentTime = 0;
-})
-
-
-const quit = document.getElementById("quit");
-const quitPrompt = document.getElementById("quitPrompt");
-const no = document.getElementById("no");
-
-quit.addEventListener("click", () => {
-  quitPrompt.style.visibility = "visible";
-});
-
-no.addEventListener("click", () => {
-  quitPrompt.style.visibility = "hidden";
-})
-
 function updatePortion(numPoints){
   let portionPercentage = numPoints / 75 * 100;
   if (portionPercentage >= 100) {
     portionPercentage = 100;
   }
-  const portion = document.getElementById("portion");
+  const portion = document.getElementById("lineProcess");
   portion.textContent = `The percentage of current line: ${Math.round(portionPercentage)}%`;
 }
 
-const helpQuit = document.getElementById("helpQuit");
-const helpContent = document.getElementById("helpContent");
-const help = document.getElementById("helpButton");
+/* -------------------------------- START BUTTON -------------------------------- */
+const startButton = document.getElementById("startButton");
 
-help.addEventListener("click", () => {
-  helpContent.style.visibility = "visible";
-})
-helpQuit.addEventListener("click", () => {
-  helpContent.style.visibility = "hidden";
+startButton.addEventListener("click", () => {
   const video = document.querySelector("video");
+
+  game.start = true;
+
+  startButton.style.visibility = "hidden";
+
+  gameProcess.style.visibility = "visible";
+  gameProcess.textContent = "Game on";
+
+  selectSound.volume = volumeVal;
+  selectSound.play().then().catch();
+
+  helpContent.style.visibility = "hidden";
+
   video.pause();
   video.currentTime = 0;
-})
+});
+
+/* -------------------------------- TRY AGAIN BUTTON -------------------------------- */
+const tryAgainButton = document.getElementById("tryAgainButton");
+
+tryAgainButton.addEventListener("click", () => {  
+  game.correctPoints().length = 0;
+  game.falsePoints().length = 0;
+
+  draw();
+  game.updateFollow();
+
+  tryAgainButton.style.visibility = "hidden";
+
+  gameProcess.textContent = "Game on";
+
+  selectSound.volume = volumeVal;
+  selectSound.play().then().catch();
+
+  errorSound = false;
+});
+
+/* -------------------------------- NEXT BUTTON -------------------------------- */
+const nextButton = document.getElementById("nextButton");
+
+nextButton.addEventListener("click", () => {
+  game.currentModelIndex++;
+
+  draw();
+
+  nextButton.style.visibility = "hidden";
+  startButton.style.visibility = "visible";
+  gameProcess.style.visibility = "hidden";
+
+  selectSound.volume = volumeVal;
+  selectSound.play().then().catch();
+});
+
+/* -------------------------------- QUIT BUTTON -------------------------------- */
+
+const quitButton = document.getElementById("quitButton");
+const quitPrompt = document.getElementById("quitPrompt");
+const no = document.getElementById("no");
+
+quitButton.addEventListener("click", () => {
+  quitPrompt.style.visibility = "visible";
+});
+
+no.addEventListener("click", () => {
+  quitPrompt.style.visibility = "hidden";
+});
+
+/* -------------------------------- VOLUME BUTTON -------------------------------- */
+const volume = document.getElementById("volume");
+let volumeVal = volume.value / 100;
+
+volume.addEventListener("change", (event) => {
+  volumeVal = event.target.value / 100;
+});
