@@ -1,7 +1,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #1abc9c;
+  background-color: #0496c7;
   text-align: center;
   user-select: none;
   font-family: sans-serif;
@@ -11,7 +11,7 @@ canvas {
 }
 
 h1 {
-  color: rgb(85, 0, 255);
+  color: yellow;
   margin: 0;
   text-align: center;
   padding: 10px 0;
@@ -58,7 +58,8 @@ header a:visited {
   font-size: 1.5rem;
   font-family: sans-serif;
   font-weight: bold;
-  background-color: #1abc9c;
+  background-color: #0496c7;
+  align-items: flex-end;
 }
 
 #timer {
@@ -254,4 +255,23 @@ img {
 #helpContent::-webkit-scrollbar-thumb {
   background-color: gray;
   border-radius: 100vw;
+}
+
+#timerDisplay p, #timerDisplay button{
+  color: white;
+  font-weight: bold;
+}
+#timerDisplay p {
+  font-size: 1.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+#timerDisplay button {
+  font-size: 1.3rem;
+  background-color: yellowgreen;
+  border: 1px solid #0496c7;
+  border-radius: 50%;
+  padding: 10px;
+  margin: 10px 0;
 }

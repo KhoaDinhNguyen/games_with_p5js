@@ -144,16 +144,26 @@ const timerDisplay = document.getElementById("timerDisplay");
 const level1 = document.getElementById("level_1");
 const level2 = document.getElementById("level_2");
 const level3 = document.getElementById("level_3");
+let levelChoose = level1;
 // Stop = pause + reset the playhead
 
+setTimer(20, level1);
+
 level1.addEventListener("click", () => {
-  TIMER_EACH_GAME = 20;
+  setTimer(20, level1);
 });
 
 level2.addEventListener("click", () => {
-  TIMER_EACH_GAME = 30;
+  setTimer(30, level2);
 });
 
 level3.addEventListener("click", () => {
-  TIMER_EACH_GAME = 45;
+  setTimer(45, level3);
 });
+
+function setTimer(timer, level) {
+  levelChoose.style.backgroundColor = "yellowgreen";
+  levelChoose = level;
+  TIMER_EACH_GAME = timer;
+  levelChoose.style.backgroundColor = "darkgreen";
+}
