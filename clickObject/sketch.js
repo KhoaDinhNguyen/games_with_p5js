@@ -78,6 +78,7 @@ function finishGame() {
   }
   bestscore.textContent = `Best score: ${bestScore}`;
   startButton.style.visibility = "visible";
+  timerDisplay.style.visibility = "visible";
 }
 
 const startButton = document.getElementById("start");
