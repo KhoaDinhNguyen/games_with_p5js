@@ -73,6 +73,7 @@ header div:nth-child(1) {
   max-height: 400px;
   padding: 50px;
   padding-top: 10px;
+  visibility: hidden;
 }
 
 #helpContent h2 {
