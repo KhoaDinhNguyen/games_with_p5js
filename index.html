@@ -1,81 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Londrina+Sketch&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
-    <title>Homepage</title>
-    <link rel="icon" type="image/png" href="../src/mushroom.png">
-    <link rel="stylesheet" type="text/css" href="style.css">
-
+    <!-- p5.js -->
     <script src="libraries/p5.min.js"></script>
     <script src="libraries/p5.sound.min.js"></script>
+
+    <!-- import font style from google font: https://fonts.google.com/specimen/Jersey+20 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+20&display=swap" rel="stylesheet">
+
+    <title>Homepage</title>
+
+    <!-- page view -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width initial-scale=1">
+
+    <!-- Upload stye and icon -->
+    <link rel="icon" type="image/png" href="./src/mushroom.png">
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-    <div id="question">
-      <div class="function">
-        <img src="./src/question.png">
-      </div>
-    </div>
-    <div id="help">
-      <div>
-        <img src="./src/close.png" id="helpClose" alt="close">
-      </div>
-      <div>
+    <header>
+      <!-- Help button -->
+      <div><img src="./src/question.png" alt="helpButton" class="function" id="helpButton"></div>
+
+      <!-- Help content -->
+      <div id="helpContent">
+        <button id="helpQuit">X</button>
         <h2>Help</h2>
+        <h3>Company</h3>
+        <p>Group 10 - Fine-Motor Skills Application</p>
+        <h3>Application</h3>
+        <p>This web application is built for toddlers to pratice exercises and develop their motor skills</p>
+        <p>The web contains three exercises: </p>
+        <ul>
+          <li>Drawing lines</li>
+          <li>Draging objects</li>
+          <li>Clicking objects</li>
+        </ul>
+        <h3>Feedback</h3>
+        <p>Provide us your feedback about the application through this <a href="https://forms.gle/RF2Zea9iMQ1tvsf76" target="_blank">form</a></p>
       </div>
-      <h3>Company</h3>
-      <p>Group 10 - Fine motor skills</p>
-      <h3>Application</h3>
-      <p>This web application is built for toddlers to pratice exercises and develop their motor skills</p>
-      <p>The web contains three exercises: </p>
-      <ul>
-        <li>Drawing line</li>
-        <li>Draging object</li>
-        <li>Clicking object</li>
-      </ul>
-      <h3>Feedback</h3>
-      <p>Provide us your feedback about the application. Through this <a href="https://forms.gle/RF2Zea9iMQ1tvsf76">form</a></p>
+
+      <!-- Cloud images -->
+      <div class="cloud" id="cloud1"></div>
+      <div class="cloud" id="cloud2"></div>
+      <div class="cloud" id="cloud3"></div>
+      <!-- End of header -->
+    </header>
+    <main>
+      <h1>GAME START</h1>
+      <div id="games">
+        <!-- CLICKING OBJECTS -->
+        <a href="javascript:setTimeout(()=>{window.location = './clickObject/index.html' }, 1000);" id="clickObject" class="game">
+          <figure>
+            <img src="./src/clickingObject.png" alt="clickingObject"/>
+            <figcaption><h2>Clicking object</h2></figcaption>
+          </figure>
+        </a>
+
+        <!-- DRAGGING OBJECTS -->
+        <a href="javascript:setTimeout(()=>{window.location = './dragObject/index.html' }, 1000);" id="dragObject" class="game">
+          <figure>
+            <img src="./src/dragingObject.png" alt="dragingObject"/>
+            <figcaption><h2>Draging object</h2></figcaption>
+          </figure>
+        </a>
+
+        <!-- DRAWING LINES -->
+        <a href="javascript:setTimeout(()=>{window.location = './drawLine/index.html' }, 1000);" id="drawLine" class="game">
+          <figure>
+            <img src="./src/drawlingGame.png" alt="drawingLine"/>
+            <figcaption><h2>Drawling line</h2></figcaption>
+          </figure>
+        </a>
       </div>
-    <div class="cloud1"></div>
-    <div class="cloud2"></div>
-    <div class="cloud3"></div>
-    <h1>GAME START</h1>
-    <div id="games">
-      <a href="javascript:setTimeout(()=>{window.location = './drawLine/index.html' }, 1000);" id="drawLine" class="game">
-        <figure>
-          <img src="./src/drawlingGame.png" alt="drawingLine"/>
-          <figcaption><h2>Drawling line</h2></figcaption>
-        </figure>
-      </a>
-      <a href="javascript:setTimeout(()=>{window.location = './dragObject/index.html' }, 1000);" id="dragObject" class="game">
-        <figure>
-          <img src="./src/dragingObject.png" alt="dragingObject"/>
-          <figcaption><h2>Draging object</h2></figcaption>
-        </figure>
-      </a>
-      <a href="javascript:setTimeout(()=>{window.location = './clickObject/index.html' }, 1000);" id="clickObject" class="game">
-        <figure>
-          <img src="./src/clickingObject.png" alt="clickingObject"/>
-          <figcaption><h2>Clicking object</h2></figcaption>
-        </figure>
-      </a>
-    </div>
-    <div id="footer">
-      <div id="volume">
-        <div class="function">
-          <img src="src/volume.png"/>
-        </div>
-        <input name="volume" type="range" min="0" max="100" id="volume"/>
+    
+    <!-- End of main -->
+    </main>
+    
+    <footer>
+      <div id="sound">
+        <img class="function" src="./src/volume.png" alt="volume">
+        <input name="volume" id="volume" type="range" min="0" max="100" step="1">
       </div>
-      <div id="quit" class="function">
-        <img src="src/door.png"/>
-      </div>
-    </div>
+      <!-- End of footer -->
+    </footer>
+
+    <!-- Load the sketch from p5.js -->
     <script src="sketch.js"></script>
+    
+    <!-- End of body -->
   </body>
 </html>

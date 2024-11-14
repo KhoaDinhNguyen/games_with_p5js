@@ -1,21 +1,21 @@
+/* =============================== GENERAL =============================== */
 :root {
   --bg-doc: #6f8db8;
   --cloud-bg: #ffffff;
   --cloud-insert-shadow: #ccc;
 }
+
 * {
   z-index: 1;
-
+  user-select: none;
 }
+
 html, body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
 }
 
-* {
-  user-select: none;
-}
 canvas {
   display: block;
 }
@@ -24,67 +24,160 @@ body {
   background-color: #a5c5e9;
 }
 
-h1 {
-  font-family: "Pixelify Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: normal;
-  font-style: normal;
-  color: yellow;
-  text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
-  font-weight: bold;
-  text-align: center;
-  font-size: 5em;
-  z-index: 2;
-  position: relative;
-}
-
-#games img {
-  width: 100px;
-  height: 100px;
+.function {
+  background-color: #ecd079;
   border: 2px solid black;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  margin: 5px;
 }
 
-#question {
+img.function {
+  width: 30px;
+  height: 30px;
+  margin: 5px;
+}
+
+/* =============================== HEADER =============================== */
+header div:nth-child(1) {
   display: flex;
   justify-content: flex-end;
 }
 
-#help {
-  background-color: white;
-  width: 80vw;
+#helpQuit{
+  position: relative;
+  left: 100%;
+  top: 100%;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+  background-color: #e93b3b;
+  border: #e93b3b 1px solid;
+  border-radius: 10px;
+  padding: 5px 15px;
+}
+
+#helpContent {
   position: absolute;
+  transform: translate(-50%, -50%);
   left: 50%;
-  transform: translateX(-50%);
-  top: 200px;
-  border: black 1px solid;
-  padding: 10px 50px;
-  border-radius: 20px;
-  visibility: hidden;
-  z-index: 3;
+  top: 50%;
+  z-index: 2;
+  background-color: bisque;
+  border: 3px solid grey;
+  border-radius: 10px;
+  overflow-y: scroll;
+  max-width: 700px;
+  max-height: 400px;
+  padding: 50px;
+  padding-top: 10px;
 }
 
-#help img {
-  width: 50px;
-  height: 50px;
-  margin-right: -50px;
-  margin-top: -10px;
-}
-#help div {
-  display: flex;
+#helpContent h2 {
+  font-weight: 900;
+  text-align: center;
+  margin: 0;
 }
 
-#help div:nth-child(1) {
-  justify-content: end;
-}
-
-#help div:nth-child(2) {
-  justify-content: center;
-}
-
-h3 {
+#helpContent h3 {
+  font-size: 1.2rem;
   font-style: italic;
-  font-weight: normal;
+  font-weight: 600;
 }
+
+#helpContent ul {
+  list-style-type: "\1F449";
+}
+
+#helpContent::-webkit-scrollbar {
+  width: 2px;
+}
+
+#helpContent::-webkit-scrollbar-track {
+  background-color: bisque;
+  border-radius: 100vw;
+}
+
+#helpContent::-webkit-scrollbar-thumb {
+  background-color: gray;
+  border-radius: 100vw;
+}
+
+#helpContent a:visited {
+  color: blue;
+  text-decoration: underline;
+}
+
+.cloud, .cloud::before, .cloud::after {
+  position: absolute;
+  box-sizing: border-box;
+}
+
+.cloud {
+  transform: translate(-50%, -50%);
+  background-color: var(--cloud-bg);
+  border-radius: 100px;
+  box-shadow: 0 0 10px var(--cloud-bg), inset -10px -10px 30px var(--cloud-insert-shadow);
+  width: 350px;
+  height: 150px;
+}
+
+.cloud::before {
+  top: -40px;
+  left: 50px;
+  background-color: var(--cloud-bg);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--cloud-bg);
+  width: 100px;
+  height: 100px;
+}
+
+.cloud::after {
+  top: -70px;
+  left: 120px;
+  background-color: var(--cloud-bg);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--cloud-bg);
+  width: 180px;
+  height: 180px;
+}
+
+
+.cloud::before, .cloud::after {
+  content: '';
+}
+
+#cloud1 {
+  top: 25%;
+  left: 20%;
+}
+
+#cloud2 {
+  top: 35%;
+  left: 75%;
+}
+
+#cloud3 {
+  top: 75%;
+  left: 55%;
+}
+
+/* =============================== MAIN =============================== */
+
+h1 {
+  position: relative;
+  z-index: 2;
+  font-family: "Jersey 20";
+  font-weight: bold;
+  font-style: normal;
+  font-size: 5em;
+  color: yellow;
+  text-shadow: 0 0 3px black, 0 0 5px black;
+  text-align: center;
+}
+
 #games {
   display: flex;
   justify-content: space-evenly;
@@ -93,41 +186,42 @@ h3 {
 }
 
 .game {
-  height: 400px;
   align-content: center;
+  color: black;
   border: solid 1.5px black;
   border-radius: 20px;
+  text-decoration: none;
+  height: 400px;
 }
 
-figcaption {
-  border: solid 2px black;
-}
-
-h2 {
-  margin: 20px;
+.game h2 {
   font-family: sans-serif;
   font-weight: 400;
   font-style: normal;
+  margin: 20px;
 }
 
-#games a figure {
+.game figure {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
   height: 300px;
 }
 
-#games a figure img {
-  margin: 0 auto;
+.game figcaption {
+  border: solid 2px black;
 }
 
-#games a {
-  text-decoration: none;
+.game a:visited {
   color: black;
+  text-decoration: none;
 }
-#games a:visited {
-  color: black;
-  text-decoration: none;
+
+.game img {
+  border: 2px solid black;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
 }
 
 #drawLine {
@@ -154,152 +248,10 @@ h2 {
   background-color: #a5c5e9;
 }
 
-#footer {
-  display: flex;
-  justify-content: space-between;
-}
+/* =============================== FOOTER =============================== */
 
-#volume {
+#sound {
   display: flex;
   align-items: center;
-  margin-left: 20px;
   margin-top: 20px;
-}
-
-#quit, #question {
-  margin-right: 20px;
-  margin-top: 20px;
-}
-
-.function img {
-  width: 30px;
-  height: 30px;
-  margin: 5px;
-}
-
-.function {
-  background-color: #ecd079;
-  display: flex;
-  border: 2px solid black;
-  border-radius: 20px;
-}
-
-.cloud1, .cloud1::before, .cloud1::after {
-  box-sizing: border-box;
-  position: absolute;
-}
-
-.cloud1::before, .cloud1::after {
-  content: '';
-}
-
-.cloud1 {
-  width: 350px;
-  height: 150px;
-  background-color: var(--cloud-bg);
-  top: 25%;
-  left: 20%;
-  transform: translate(-50%, -50%);
-  border-radius: 100px;
-  box-shadow: 0 0 10px var(--cloud-bg), inset -10px -10px 30px var(--cloud-insert-shadow);
-}
-
-.cloud1::before {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: var(--cloud-bg);
-  top: -40px;
-  left: 50px;
-  box-shadow: 0 0 10px var(--cloud-bg);
-}
-
-.cloud1::after {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background-color: var(--cloud-bg);
-  top: -70px;
-  left: 120px;
-  box-shadow: 0 0 10px var(--cloud-bg);
-}
-
-.cloud2, .cloud2::before, .cloud2::after {
-  box-sizing: border-box;
-  position: absolute;
-}
-
-.cloud2::before, .cloud2::after {
-  content: '';
-}
-
-.cloud2 {
-  width: 350px;
-  height: 150px;
-  background-color: var(--cloud-bg);
-  top: 35%;
-  left: 75%;
-  transform: translate(-50%, -50%);
-  border-radius: 100px;
-  box-shadow: 0 0 10px var(--cloud-bg), inset -10px -10px 30px var(--cloud-insert-shadow);
-}
-
-.cloud2::before {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: var(--cloud-bg);
-  top: -40px;
-  left: 50px;
-  box-shadow: 0 0 10px var(--cloud-bg);
-}
-
-.cloud2::after {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background-color: var(--cloud-bg);
-  top: -70px;
-  left: 120px;
-  box-shadow: 0 0 10px var(--cloud-bg);
-}
-
-.cloud3, .cloud3::before, .cloud3::after {
-  box-sizing: border-box;
-  position: absolute;
-}
-
-.cloud3::before, .cloud3::after {
-  content: '';
-}
-
-.cloud3 {
-  width: 350px;
-  height: 150px;
-  background-color: var(--cloud-bg);
-  top: 75%;
-  left: 55%;
-  transform: translate(-50%, -50%);
-  border-radius: 100px;
-  box-shadow: 0 0 10px var(--cloud-bg), inset -10px -10px 30px var(--cloud-insert-shadow);
-}
-
-.cloud3::before {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  background-color: var(--cloud-bg);
-  top: -40px;
-  left: 50px;
-  box-shadow: 0 0 10px var(--cloud-bg);
-}
-
-.cloud3::after {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background-color: var(--cloud-bg);
-  top: -70px;
-  left: 120px;
-  box-shadow: 0 0 10px var(--cloud-bg);
 }
