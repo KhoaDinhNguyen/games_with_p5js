@@ -49,6 +49,8 @@ const volumeSetting = document.getElementById("volume");
 
 volumeSetting.addEventListener("change", (event) => {
   const volumeValue = event.target.value;
+  console.log(volumeValue / 100);
   selectSound.volume = volumeValue / 100;
   backgroundMusic.volume = volumeValue / 100;
+  console.log(backgroundMusic.volume);
 })
