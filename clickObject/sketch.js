@@ -14,6 +14,8 @@ let bestScore = 0;
 let TIMER_EACH_GAME = 20;
 let timer = TIMER_EACH_GAME;
 
+let numberOfClick = 0;
+
 function distanceTwoPoints([x1, y1], [x2, y2]) {
   return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
 }
@@ -53,6 +55,11 @@ function mouseClicked(){
       newRecord.play().then().catch();
     }
    score.textContent = `Score: ${gameScore}`;
+   gameProgess.textContent = "Nice";
+   numberOfClick++;
+  }
+  else if(gameStart === true && numberOfClick > 0) {
+    gameProgess.textContent = "Misclicked";
   }
 }
 
@@ -79,6 +86,8 @@ function finishGame() {
   bestscore.textContent = `Best score: ${bestScore}`;
   startButton.style.visibility = "visible";
   timerDisplay.style.visibility = "visible";
+  gameProgess.textContent = "Game on";
+  record.replaceChild(timerDisplayChoose, gameProgess);
 }
 
 const startButton = document.getElementById("start");
@@ -99,6 +108,7 @@ startButton.addEventListener("click", () => {
   video.pause();
   video.currentTime = 0;
   timerDisplay.style.visibility = "hidden";
+  record.replaceChild(gameProgess, timerDisplayChoose);
 })
 
 function initialize() {
@@ -151,14 +161,23 @@ let levelChoose = level1;
 setTimer(20, level1);
 
 level1.addEventListener("click", () => {
+  const select = new Audio("../src/selectSound.mp3");
+  select.volume = volume;
+  select.play().then().catch();
   setTimer(20, level1);
 });
 
 level2.addEventListener("click", () => {
+  const select = new Audio("../src/selectSound.mp3");
+  select.volume = volume;
+  select.play().then().catch();
   setTimer(30, level2);
 });
 
 level3.addEventListener("click", () => {
+  const select = new Audio("../src/selectSound.mp3");
+  select.volume = volume;
+  select.play().then().catch();
   setTimer(45, level3);
 });
 
@@ -168,3 +187,12 @@ function setTimer(timer, level) {
   TIMER_EACH_GAME = timer;
   levelChoose.style.backgroundColor = "darkgreen";
 }
+
+
+const record = document.getElementById("record");
+const timerDisplayChoose = document.getElementById("timerDisplay");
+const gameProgess = document.createElement("p");
+gameProgess.textContent = "Game on";
+gameProgess.setAttribute("id", "gameProgess");
+
+
