@@ -252,13 +252,13 @@ class GameStart {
     currentModel.run();
     if (this.start == false && this.currentModelIndex < this.arrayOfModel.length - 1) {
       nextButton.style.visibility = "visible";
-      gameProcess.textContent = "Well done!!! Moving to the next level";
+      gameProgress.textContent = "Well done!!! Moving to the next level";
       const welldone = new Audio("../src/drawlingGameWellDone.mp3");
       welldone.volume = volumeVal;
       welldone.play().then().catch();
     }
     else if (this.start === false && this.currentModelIndex === this.arrayOfModel.length - 1){
-      gameProcess.style.visibility = "hidden";
+      gameProgress.style.visibility = "hidden";
       aceGame.style.visibility = "visible";
       const win = new Audio("../src/drawlingGameWin.mp3");
       win.volume = volumeVal;
@@ -306,17 +306,17 @@ function mouseDragged() {
 /* ================================ INTERACTION ================================ */
 
 /* -------------------------------- VARIALBES -------------------------------- */
-const gameProcess = document.getElementById("gameProcess");
+const gameProgress = document.getElementById("gameProgress");
 const selectSound = new Audio("../src/selectSound.mp3");
 
-const portion = document.getElementById("lineProcess");
+const portion = document.getElementById("lineProgress");
 const aceGame = document.getElementById("finishGame");
 
 let errorSound = false;
 
 function insertError() {
   tryAgainButton.style.visibility = "visible";
-  gameProcess.textContent = "Oh no, the line is out";
+  gameProgress.textContent = "Oh no, the line is out";
   const error = new Audio("../src/drawlingGameStrayLine.mp3");
   if (!errorSound) {
     errorSound.volume = volumeVal;
@@ -331,7 +331,7 @@ function updatePortion(numPoints){
   if (portionPercentage >= 100) {
     portionPercentage = 100;
   }
-  const portion = document.getElementById("lineProcess");
+  const portion = document.getElementById("lineProgress");
   portion.textContent = `The percentage of current line: ${Math.round(portionPercentage)}%`;
 }
 
@@ -361,8 +361,8 @@ startButton.addEventListener("click", () => {
 
   startButton.style.visibility = "hidden";
 
-  gameProcess.style.visibility = "visible";
-  gameProcess.textContent = "Game on";
+  gameProgress.style.visibility = "visible";
+  gameProgress.textContent = "Game on";
 
   selectSound.volume = volumeVal;
   selectSound.play().then().catch();
@@ -385,7 +385,7 @@ tryAgainButton.addEventListener("click", () => {
 
   tryAgainButton.style.visibility = "hidden";
 
-  gameProcess.textContent = "Game on";
+  gameProgress.textContent = "Game on";
 
   selectSound.volume = volumeVal;
   selectSound.play().then().catch();
@@ -403,7 +403,7 @@ nextButton.addEventListener("click", () => {
 
   nextButton.style.visibility = "hidden";
   startButton.style.visibility = "visible";
-  gameProcess.style.visibility = "hidden";
+  gameProgress.style.visibility = "hidden";
 
   selectSound.volume = volumeVal;
   selectSound.play().then().catch();

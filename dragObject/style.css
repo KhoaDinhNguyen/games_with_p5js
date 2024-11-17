@@ -1,189 +1,58 @@
+/* =============================== GENERAL =============================== */
 html, body {
-  margin: 0;
-  padding: 0;
-  user-select: none;
   font-family: sans-serif;
   background-color: #0496c7;
+  cursor: default;
+  user-select: none;
+  margin: 0;
+  padding: 0;
 }
+
 canvas {
   display: block;
 }
 
-#notification {
-  display: flex;
-  justify-content: space-between;
-  background-color: white;
-  background-color: #0496c7;
-  align-items: flex-end;
-
+.function {
+  background-color: #ecd079;
+  border: 2px solid black;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding: 6px;
 }
 
-#notification p{
-  font-weight: bold;
-  font-size: 1.5rem;
-  margin: 0;
-  padding: 10px 20px;
-
-  color: black;
+/* =============================== HEADER =============================== */
+nav {
+  width: 100%;
 }
-
-h1 {
-  color: yellow;
-  font-family: "Jersey 20", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 3em;
-  text-align: center;
-  margin: 0;
-  margin-bottom: 20px;
-}
-
-header {
+nav ul {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  list-style: none;
   margin-top: 0;
 }
 
-header a{
+nav a{
+  font-weight: bold;
+  font-size: 1.3em;
+  text-decoration: none;
   background-color: #ecd079;
-  padding: 5px 15px;
   border: black 2px solid;
   border-radius: 10px;
-  font-weight: bold;
-  text-decoration: none;
   margin-left: 10px;
-  font-size: 1.3em;
   margin-top: 0;
+  padding: 5px 15px;
 }
 
-header a:visited {
-  color: black;
+nav a:visited {
   text-decoration: none;
+  color: black;
+
 }
 
 #self {
   background-color: grey;
-}
-
-#finish {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  visibility: hidden;
-  background-color: rgb(12, 9, 52);
-  z-index: 1;
-  padding: 5px;
-  border: 5px solid black;
-  border-radius: 20px;
-}
-
-#finish p:nth-child(1) {
-  padding: 0 30px;
-  font-size: 2rem;
-  font-family: sans-serif;
-  font-weight: bold;
-  color: yellow;
-  margin-bottom: 30px;
-}
-
-#finish p:nth-child(2), #finish p:nth-child(3) {
-  padding: 0 30px;
-  font-size: 1.3rem;
-  font-family: sans-serif;
-  font-weight: bold;
-  color: white;
-  margin: 0;
-  margin-bottom: 10px;
-}
-
-
-#start {
-  margin: 0 auto;
-  width: max-content;
-  display: block;
-  background-color: rgb(245, 64, 64);
-  color: white;
-  border-radius: 50%;
-  border: 1px rgb(255, 0, 0) solid;
-  font-size: 1.5rem;
-  padding: 0 10px;
-  margin-top: 10px;
-  font-weight: 700;
-}
-
-img {
-  width: 30px;
-  height: 30px;
-  margin: 5px;
-}
-
-#quitPrompt {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  visibility: hidden;
-  font-family: sans-serif;
-  font-weight: bold;
-  border: 2px solid black;
-  border-radius: 20px;
-  padding: 10px;
-  font-size: 1.3rem;
-  background-color: bisque;
-  z-index: 4;
-}
-
-.quitPromptAnwser {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.quitPromptAnwser button:nth-child(1) {
-  background-color: green;
-  border: green 1px solid;
-  color: azure;
-  font-size: 1.5rem;
-  padding: 5px 10px;
-  border-radius: 10px;
-  margin-top: 10px;
-}
-
-
-.quitPromptAnwser button:nth-child(2) {
-  background-color: #e93b3b;
-  border: #e93b3b 1px solid;
-  color: azure;
-  font-size: 1.5rem;
-  padding: 5px 10px;
-  border-radius: 10px;
-  margin-top: 10px;
-}
-
-#volumnPrompt {
-  display: flex;
-  align-items: center;
-}
-
-.function {
-  padding: 5px;
-  background-color: #ecd079;
-  display: flex;
-  border: 2px solid black;
-  border-radius: 20px;
-}
-
-footer {
-  display: flex;
-  justify-content: space-between;
-}
-
-
-#help {
-  display: flex;
-  justify-content: flex-end;
-  margin: 0;
 }
 
 #helpContent {
@@ -191,39 +60,33 @@ footer {
   transform: translate(-50%, -50%);
   left: 50%;
   top: 50%;
-  background-color: bisque;
-  padding: 50px;
-  border: 3px solid grey;
-  border-radius: 10px;
-  padding-top: 40px;
   max-width: 700px;
   max-height: 400px;
+  background-color: bisque;
+  border: 3px solid grey;
+  border-radius: 10px;
   overflow-y: scroll;
-  text-align: justify;
-  z-index: 2;
+  padding: 50px;
+  padding-top: 10px;
 }
 
-#closeButton {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: -40px;
-  margin-right: -50px;
-}
-
-#closeButton button {
-  background-color: #e93b3b;
+#helpQuit{
+  position: relative;
+  left: 100%;
+  top: 100%;
   font-size: 1.5em;
-  padding: 5px 15px;
   font-weight: bold;
   color: white;
+  background-color: #e93b3b;
   border: #e93b3b 1px solid;
   border-radius: 10px;
+  padding: 5px 15px;
 }
 
 #helpContent h2 {
-  margin: 0;
   font-weight: 900;
   text-align: center;
+  margin: 0;
 }
 
 #helpContent h3 {
@@ -245,33 +108,174 @@ footer {
   background-color: gray;
   border-radius: 100vw;
 }
+#helpContent ul {
+  list-style-type: "\1F680";
+}
 
-#timerDisplay {
+/* =============================== MAIN =============================== */
+h1 {
+  font-family: "Jersey 20";
+  font-weight: 400;
+  font-style: normal;
+  font-size: 3em;
+  color: yellow;
+  text-align: center;
+  padding: 10px 0;
+  margin: 0;
+  margin-top: -15px;
+}
+
+/* =============================== NOTIFICATON =============================== */
+#notification {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: flex-end;
+  background-color: #0496c7;
+}
+
+#notification p{
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: black;
+  padding: 10px 20px;
+  margin: 0;
+}
+
+#gameProgress {
+  display: none;
+}
+
+#start {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: white;
+  background-color: rgb(245, 64, 64);
+  border: 1px rgb(255, 0, 0) solid;
+  border-radius: 50%;
+  width: max-content;
+  padding: 20px;
+  margin: 0 auto;
+  margin-top: 10px;
+
+}
+
+#sound {
+  display: flex;
   align-items: center;
 }
 
-#timerDisplay p, #timerDisplay button{
-  color: white;
+
+#setTimerDisplay p, #setTimerDisplay button{
   font-weight: bold;
-  margin-right: 10px;
+  color: white;
 }
 
-#timerDisplay p {
+#setTimerDisplay p {
   font-size: 1.5rem;
+  color: black;
   padding: 0;
   margin: 0;
-  display: inline;   
-  margin-right: 10px; 
-  color: black;
 }
 
-#timerDisplay button {
+#setTimerDisplay button {
   font-size: 1.3rem;
   background-color: yellowgreen;
   border: 1px solid #0496c7;
   border-radius: 50%;
   padding: 10px;
+  margin-bottom: 10px;
 }
 
+/* =============================== VOLUMN AND QUIT BUTTON =============================== */
+#volumeAndQuitButton {
+  display: flex;
+  justify-content: space-between;
+  background-color: #0496c7;
+  align-items: center;
+}
+
+#sound {
+  display: flex;
+  align-items: center;
+}
+
+#quitPrompt {
+  position: absolute;
+  z-index: 4;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: black;
+  background-color: bisque;
+  border: 2px solid black;
+  border-radius: 20px;
+  visibility: hidden;
+  padding: 10px;
+}
+
+.quitPromptAnwser {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.quitPromptAnwser p {
+  font-size: 1.5rem;
+  color: azure;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+.quitPromptAnwser p:nth-child(1){
+  background-color: green;
+  border: green 1px solid;
+}
+
+.quitPromptAnwser p:nth-child(1) a {
+  color: azure;
+  text-decoration: none;
+}
+
+.quitPromptAnwser p:nth-child(2) {
+  background-color: #e93b3b;
+  border: #e93b3b 1px solid;
+}
+
+/* =============================== GAME FINISH NOTIFICATION =============================== */
+
+#finishGame {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  background-color: rgb(12, 9, 52);
+  border: 5px solid black;
+  border-radius: 20px;
+  padding: 5px;
+  visibility: hidden;
+  z-index: 1;
+}
+
+#finishGame p:nth-child(1) {
+  font-size: 2rem;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: yellow;
+  padding: 0 30px;
+  margin-bottom: 30px;
+}
+
+#finishGame p:nth-child(2), #finishGame p:nth-child(3) {
+  font-size: 1.3rem;
+  font-family: sans-serif;
+  font-weight: bold;
+  color: white;
+  padding: 0 30px;
+  margin: 0;
+  margin-bottom: 10px;
+}

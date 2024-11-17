@@ -2,36 +2,78 @@ function setup() {
   createCanvas(windowWidth, 500);
 }
 
-
+/*
+  Radius and position for two circles
+*/ 
 const r = 40;
 const R = r * 1.25;
 
+let r_x = 50;
+let r_y = 50;
+let R_x = 455;
+let R_y = 335;
+
+/*
+  TIME_EACH_GAME: set the game time
+  timer: timer for the game
+*/ 
 let TIME_EACH_GAME = 20;
 let timer = TIME_EACH_GAME;
 
-let shapeY = 50;
-let shapeX = 50;
-let x2 = 455;
-let y2 = 335;
-
 let shapeMove = false;
 let gameStart = false;
+
+/*
+  gameScore: current game score
+  bestScore: best game score
+*/ 
 let gameScore = 0;
 let bestScore = 0;
 
-function distance ([x1, y1], [x2, y2]) {
-  return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+/* -------------------------------- VARIABLE FOR DOM -------------------------------- */
+const gameProgress = document.getElementById("gameProgress");
+const time = document.getElementById("timer");
+const score = document.getElementById("score");
+
+const startButton = document.getElementById("start");
+
+const finishGameNotification = document.getElementById("finishGame");
+
+const currentScore = document.getElementById("currentscore");
+const bestScoreRecord = document.getElementById("bestscore");
+
+const getVolume = document.getElementById("volume");
+let volume = getVolume.value / 100;
+
+const setTimerDisplay = document.getElementById("setTimerDisplay");
+const level1 = document.getElementById("level_1");
+const level2 = document.getElementById("level_2");
+const level3 = document.getElementById("level_3");
+
+let levelChoose = level1;
+
+const helpContent = document.getElementById("helpContent");
+const helpQuit = document.getElementById("helpQuit");
+const helpButton = document.getElementById("helpButton");
+
+const quitPrompt = document.getElementById("quitPrompt");
+const quitButton = document.getElementById("quitButton");
+const noQuit = document.getElementById("no");
+
+/* -------------------------------- FUNCTION -------------------------------- */
+function distance ([x_1, y_1], [x_2, y_2]) {
+  return Math.sqrt(Math.pow(x_1 - x_2, 2) + Math.pow(y_1 - y_2, 2));
 }
 function draw(){
   background('white');
 
   fill("white");
   drawingContext.setLineDash([15, 5]);
-  circle(x2, y2, R * 2);
+  circle(R_x, R_y, R * 2);
   
   fill("lightyellow");
   drawingContext.setLineDash([0, 0]);
-  circle(shapeX, shapeY, r * 2);
+  circle(r_x, r_y, r * 2);
   
   if (gameStart) {
     if (frameCount % 60 == 0 && timer > 0) {
@@ -50,7 +92,7 @@ function draw(){
 
 //check if mouse in within circle
 function mousePressed(){
-  let d = dist(mouseX, mouseY, shapeX, shapeY);
+  let d = dist(mouseX, mouseY, r_x, r_y);
   if(d < R){
     shapeMove = true;
   } else {
@@ -60,131 +102,62 @@ function mousePressed(){
 
 //check if mouse is released on or off designated area
 function mouseReleased(){
+  const distanceBetweenTwoCircle = distance([mouseX, mouseY], [R_x, R_y]);
+
   shapeMove = false;
-  const distanceBetweenTwoCircle = distance([mouseX, mouseY], [x2, y2]);
+
   if (distanceBetweenTwoCircle + r <= R && gameStart == true) {
     const correct = new Audio("../src/dragingObjectCorrect.mp3");
     correct.volume = volume;
     correct.play().then().catch();
-    result.textContent = "Good job";
+    gameProgress.textContent = "Good job";
+
     gameScore++;
     if (gameScore > 0 && gameScore % 5 == 0) {
       const record = new Audio("../src/clickingObjectRecord.mp3");
       record.volume = volume;
       record.play().then().catch();
     }
+
     score.textContent = `Score: ${gameScore}`;
-    x2 = random(100, windowWidth - 200);
-    y2 = random(100, 400);
+
+    R_x = random(100, windowWidth - 200);
+    R_y = random(100, 400);
   }
   else if (gameStart == true) {
     const wrong = new Audio("../src/drawlingGameStrayLine.mp3");
     wrong.volume = volume;
     wrong.play().then().catch();
-    result.textContent = "Wrong location";
+
+    gameProgress.textContent = "Wrong location";
   }
   else {
-    result.textContent = "Run game";
+    gameProgress.textContent = "Game on";
   }
 } 
 
 //allows object to move with user input
 function mouseDragged(){
   if (shapeMove && gameStart){
-    shapeY = mouseY;
-    shapeX = mouseX;
+    r_y = mouseY;
+    r_x = mouseX;
   }
 }
 
-
-const result = document.getElementById("result");
-const time = document.getElementById("timer");
-const score = document.getElementById("score");
-const startButton = document.getElementById("start");
-
 function intialize() {
-  console.log(TIME_EACH_GAME);
   timer = TIME_EACH_GAME;
   gameScore = 0;
   gameStart = true;
+  display();
+}
+
+function display() {
   score.textContent = `Score: ${gameScore}`;
+  time.textContent = `Timer: ${timer}`
 }
 
-startButton.addEventListener("click", () => {
-  const finish = document.getElementById("finish");
-
-  const select = new Audio("../src/selectSound.mp3");
-  select.volume = volume;
-  select.play().then().catch();
-
-  helpContent.style.visibility = "hidden";
-  const video = document.querySelector("video");
-  video.pause();
-  video.currentTime = 0;
-  startButton.style.visibility = "hidden";
-  finish.style.visibility = "hidden";
-  intialize();
-  timerDisplay.style.visibility = "hidden";
-});
-
-function finishGame() {
-  const currentScore = document.getElementById("currentscore");
-  const finish = document.getElementById("finish");
-  const bestScoreText = document.getElementById("bestscore");
-
-  if (bestScore < gameScore) {
-    bestScore = gameScore;
-  }
-
-  finish.style.visibility = "visible";
-  startButton.style.visibility = "visible";
-  startButton.innerHTML = "<p>Try Again</p>";
-  currentScore.textContent = `Current Score: ${gameScore}`;
-  bestScoreText.textContent = `Best Score: ${bestScore}`;
-  timerDisplay.style.visibility = "visible";
-}
-
-const quitPrompt = document.getElementById("quitPrompt");
-const quit = document.getElementById("quit");
-const noQuit = document.getElementById("no");
-
-noQuit.addEventListener("click", () => {
-  quitPrompt.style.visibility = "hidden";
-})
-
-quit.addEventListener("click", () => {
-  quitPrompt.style.visibility = "visible";
-})
-
-const getVolume = document.getElementById("volumn");
-let volume = getVolume.value / 100;
-
-getVolume.addEventListener("change", (event) => {
-  volume = event.target.value / 100;
-});
-
-const helpContent = document.getElementById("helpContent");
-const helpQuit = document.getElementById("helpQuit");
-const help = document.getElementById("help");
-
-helpQuit.addEventListener("click", () => {
-  helpContent.style.visibility = "hidden";
-  const video = document.querySelector("video");
-  video.pause();
-  video.currentTime = 0;
-});
-
-help.addEventListener("click", () => {
-  helpContent.style.visibility = "visible";
-})
-
-const timerDisplay = document.getElementById("timerDisplay");
-const level1 = document.getElementById("level_1");
-const level2 = document.getElementById("level_2");
-const level3 = document.getElementById("level_3");
-let levelChoose = level1;
-// Stop = pause + reset the playhead
-
+/* ================================ INTERACTION ================================ */
+/* -------------------------------- SET TIMER DISPLAY -------------------------------- */
 setTimer(20, level1);
 
 level1.addEventListener("click", () => {
@@ -200,8 +173,75 @@ level3.addEventListener("click", () => {
 });
 
 function setTimer(timer, level) {
+  const selectSound = new Audio("../src/selectSound.mp3");
+  selectSound.volume = volume;
+  selectSound.play().then().catch();
   levelChoose.style.backgroundColor = "yellowgreen";
   levelChoose = level;
   TIME_EACH_GAME = timer;
   levelChoose.style.backgroundColor = "darkgreen";
 }
+
+/* -------------------------------- HELP CONTENT -------------------------------- */
+helpQuit.addEventListener("click", () => {
+  helpContent.style.visibility = "hidden";
+  const video = document.querySelector("video");
+  video.pause();
+  video.currentTime = 0;
+});
+
+helpButton.addEventListener("click", () => {
+  helpContent.style.visibility = "visible";
+})
+
+/* -------------------------------- START BUTTON -------------------------------- */
+startButton.addEventListener("click", () => {
+  const video = document.querySelector("video");
+  video.pause();
+  video.currentTime = 0;
+
+  helpContent.style.visibility = "hidden";
+  startButton.style.visibility = "hidden";
+
+  const selectSound = new Audio("../src/selectSound.mp3");
+  selectSound.volume = volume;
+  selectSound.play().then().catch();
+
+  finishGameNotification.style.visibility = "hidden";
+  
+  gameProgress.style.display = 'block';
+  setTimerDisplay.style.display = 'none';
+  intialize();
+});
+
+/* -------------------------------- FINISH GAME NOTIFICATION -------------------------------- */
+function finishGame() {
+  if (bestScore < gameScore) {
+    bestScore = gameScore;
+  }
+
+  finishGameNotification.style.visibility = "visible";
+
+  startButton.style.visibility = "visible";
+  startButton.textContent = "Try Again";
+  
+  currentScore.textContent = `Current Score: ${gameScore}`;
+  bestScoreRecord.textContent = `Best Score: ${bestScore}`;
+
+  setTimerDisplay.style.display = 'block';
+  gameProgress.style.display = 'none';
+}
+
+/* -------------------------------- QUIT BUTTON  -------------------------------- */
+noQuit.addEventListener("click", () => {
+  quitPrompt.style.visibility = "hidden";
+})
+
+quitButton.addEventListener("click", () => {
+  quitPrompt.style.visibility = "visible";
+})
+
+/* -------------------------------- VOLUME BUTTON -------------------------------- */
+getVolume.addEventListener("change", (event) => {
+  volume = event.target.value / 100;
+});
