@@ -175,14 +175,14 @@ startButton.addEventListener("click", () => {
   initialize();
 })
 
-/* -------------------------------- FINISH GAME NOTIFICATION -------------------------------- */
+/* -------------------------------- FINISH GAME NOTIFICATION ------------------------------- */
 function finishGame() {
   if (bestScore < gameScore) {
     bestScore = gameScore;
   }
   
   numberOfClick = 0;
-  
+
   finishGameNotification.style.visibility = "visible";
 
   startButton.style.visibility = "visible";
