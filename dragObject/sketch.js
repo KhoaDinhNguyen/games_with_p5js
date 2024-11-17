@@ -1,5 +1,5 @@
 function setup() {
-  createCanvas(windowWidth, 500);
+  createCanvas(windowWidth, 550);
 }
 
 /*
@@ -49,7 +49,6 @@ const setTimerDisplay = document.getElementById("setTimerDisplay");
 const level1 = document.getElementById("level_1");
 const level2 = document.getElementById("level_2");
 const level3 = document.getElementById("level_3");
-
 let levelChoose = level1;
 
 const helpContent = document.getElementById("helpContent");
@@ -64,6 +63,7 @@ const noQuit = document.getElementById("no");
 function distance ([x_1, y_1], [x_2, y_2]) {
   return Math.sqrt(Math.pow(x_1 - x_2, 2) + Math.pow(y_1 - y_2, 2));
 }
+
 function draw(){
   background('white');
 
@@ -122,7 +122,7 @@ function mouseReleased(){
     score.textContent = `Score: ${gameScore}`;
 
     R_x = random(100, windowWidth - 200);
-    R_y = random(100, 400);
+    R_y = random(100, 500);
   }
   else if (gameStart == true) {
     const wrong = new Audio("../src/drawlingGameStrayLine.mp3");
