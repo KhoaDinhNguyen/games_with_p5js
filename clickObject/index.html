@@ -27,22 +27,52 @@
       <!-- Navigation bar -->
       <nav>
         <ul>
-          <a href="../index.html">Homepage</a>
-        <a id="self">Clicking objects</a>
-        <a href="../dragObject/index.html">Dragging objects</a>
-        <a href="../drawLine/index.html">Drawing lines</a>
-        <div id="help">
-          <img src="../src/question.png" class="function"/>
-        </div>
+          <li><a href="../index.html">Homepage</a></li>
+          <li><a id="self">Clicking objects</a></li>
+          <li><a href="../dragObject/index.html">Dragging objects</a></li>
+          <li><a href="../drawLine/index.html">Drawing lines</a></li>
+          <li>
+            <div id="helpButton">
+              <img src="../src/question.png" class="function" alt="helpButton">
+            </div>
+          </li>
         </ul>
       </nav>
-      
+
+      <!-- Help content -->
+      <div id="helpContent">
+        <button id="helpQuit">X</button>
+        <!-- Game information -->
+        <h2>CLICKING OBJECTS</h2>
+        <h3>About the game</h3>
+        <p>The Clicking Objects is a toddler friendly game that allows the user to click/point to the specific object, once the object is clicked by the user it will move to a new random location.</p>
+        <h3>How to play</h3>
+        <ul>
+          <li><p>Click "Start" to play the game.</p></li>
+          <li><p>Click on the red circle appearing on the white screen.</p></li>
+          <li><p>There is a timer countdown to 0.</p></li>
+          <li><p>At 0, the current score is record.</p></li>
+          <li><p>Click on "Try Again" to play new game. Best score is always record.</p></li>
+        </ul>
+        <h3>Purpose</h3>
+        <p>The licking Objects helps toddlers increase their reflexibility and arms muscle.</p>
+
+        <!-- Video instruction -->
+        <h3>Video instruction</h3>
+        <video controls width="500" id="instruction">
+          <source src="../src/clickingObject.mp4" type="video/mp4">
+        </video>
+      </div>
+      <!-- End of header -->
     </header>
+
+
     <main>
       <h1>Clicking Objects: Click On Red Circle</h1>
-      <div id="record">
+      <div id="notification">
         <p id="score">Score: 0</p>
-        <div id="timerDisplay">
+        <p id="gameProgress">Game on</p>
+        <div id="setTimerDisplay">
           <p>Choose timer</p>
           <button id="level_1">20</button>
           <button id="level_2">30</button>
@@ -50,49 +80,44 @@
         </div>
         <p id="timer">Timer: 0</p>
       </div>
+      <!-- End of main -->
     </main>
-    <div id="helpContent">
-      <div id="closeButton">
-        <button id="helpQuit">X</button>
-      </div>
-      <h2>CLICKING OBJECTS</h2>
-      <h3>About the game</h3>
-      <p>The Clicking Objects is a toddler friendly game that allows the user to click/point to the specific object, once the object is clicked by the user it will move to a new random location.</p>
-      <h3>How to play</h3>
-      <ul>
-        <li><p>Click "Start" to play the game.</p></li>
-        <li><p>Click on the red circle appearing on the white screen.</p></li>
-        <li><p>There is a timer countdown to 0.</p></li>
-        <li><p>At 0, the current score is record.</p></li>
-        <li><p>Click on "Try Again" to play new game. Best score is always record.</p></li>
-      </ul>
-      <h3>Purpose</h3>
-      <p>The licking Objects helps toddlers increase their reflexibility and arms muscle.</p>
-      <h3>Video instruction</h3>
-      <video controls controlslist="nodownload" width="500" id="instruction">
-        <source src="../src/clickingObject.mp4" type="video/mp4"/>
-      </video>
-    </div>
-    <button id="start"><p>START</p></button>
+
     <footer>
-      <div id="volumnPrompt"> 
-        <img src="../src/volume.png" class="function"/>
-        <input id="volumn" name="volumn" type="range" min="0" max="100"/>
+      <!-- Game play button -->
+      <button id="start">START</button>
+
+      <!-- Volume and Quit button -->
+      <div id="volumeAndQuitButton">
+        <div id="sound">
+          <img class="function" src="../src/volume.png" alt="volume">
+          <input name="volume" id="volume" type="range" min="0" max="100" step="1">
+        </div>
+        <img id="quitButton" class="function" src="../src/door.png" alt="quit">
       </div>
-      <img src="../src/door.png" alt="quit" id="quit"  class="function"/>
+
+      <!-- Quit Prompt -->
+      <div id="quitPrompt">
+        <div>Do you want to leave the game?</div>
+        <div class="quitPromptAnwser">
+          <p><a href="../index.html">Yes</a></p>
+          <p id="no">No</p>
+        </div>
+      </div>
+
+      <!-- Finish the game -->
+      <div id="finishGame">
+        <p>GAME OVER</p>
+        <p id="currentscore">_</p>
+        <p id="bestscore">_</p>
+      </div>
+
+      <!-- End of footer -->
     </footer>
-    <div id="finish">
-      <p>GAME OVER</p>
-      <p id="currentscore">_</p>
-      <p id="bestscore">_</p>
-    </div>
-    <div id="quitPrompt">
-      <div>Do you want to leave the game? </div>
-      <div class="quitPromptAnwser">
-        <a href="../index.html"><button id="yes">Yes</button></a>
-        <button id="no">No</button>
-      </div>
-    </div>
+
+    <!-- Load the sketch from p5.js -->
     <script src="sketch.js"></script>
+
+    <!-- End of body -->
   </body>
 </html>

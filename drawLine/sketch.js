@@ -280,7 +280,7 @@ class GameStart {
 const game = new GameStart();
 
 function setup() {
-  createCanvas(windowWidth, 600);
+  createCanvas(windowWidth, 550);
 }
 
 function draw() {
