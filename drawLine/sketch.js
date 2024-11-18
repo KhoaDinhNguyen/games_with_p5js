@@ -47,7 +47,7 @@ class Line {
       }
     }
   }
-  drawLine(){
+  drawLine(i){
     if (this.finish == false) {
       stroke('grey');
       strokeWeight(3);
@@ -62,10 +62,18 @@ class Line {
     }
 
     drawingContext.setLineDash([0, 0]);
-    stroke('red');
-    fill('red');
-    circle(this.x1, this.y1, 20);
-    
+
+    if (i == 0) {
+      stroke('yellowgreen');
+      fill('yellowgreen');
+      circle(this.x1, this.y1, 20);
+    }
+    else {
+      stroke('red');
+      fill('red');
+      circle(this.x1, this.y1, 20);
+    }
+
     stroke('red');
     fill('red');
     circle(this.x2, this.y2, 20);
@@ -155,8 +163,8 @@ class Model {
   }
   drawModel() {
     updatePortion(this.numPoints);
-    for (const line of this.arrayOfLine) {
-      line.drawLine();
+    for (let i = 0; i < this.arrayOfLine.length; ++i) {
+      this.arrayOfLine[i].drawLine(i);
     }
   }
   isFollowed([x, y]) {
