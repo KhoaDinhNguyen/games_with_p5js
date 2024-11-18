@@ -434,7 +434,6 @@ no.addEventListener("click", () => {
 /* -------------------------------- VOLUME BUTTON -------------------------------- */
 const volume = document.getElementById("volume");
 let volumeVal = volume.value / 100;
-console.log(volumeVal);
 
 volume.addEventListener("change", (event) => {
   volumeVal = event.target.value / 100;
